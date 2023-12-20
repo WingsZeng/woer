@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="naive"
+description="naive"
+command="/usr/bin/naive"
+command_args="/etc/naive/config.json"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_background="yes"
+
+depend() {
+	need net
+	after net
+}
