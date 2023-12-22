@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="sing-box"
+description="sing-box"
+command="/usr/bin/sing-box"
+command_args="-D /usr/share/sing-box -C /etc/sing-box run"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_background="yes"
+
+depend() {
+	need net
+	after net
+}
