@@ -16,7 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	acct-user/naive
+	acct-group/naive
+"
 BDEPEND=""
 
 S=${WORKDIR}/naiveproxy-${MY_PV}-linux-x64

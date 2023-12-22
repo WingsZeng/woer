@@ -8,6 +8,7 @@ command="/usr/bin/naive"
 command_args="/etc/naive/config.json"
 pidfile="/run/${RC_SVCNAME}.pid"
 command_background="yes"
+command_user="naive"
 
 depend() {
 	need net
