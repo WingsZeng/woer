@@ -59,7 +59,11 @@ src_configure() {
 	use gvisor && tags+="with_gvisor,"
 	use embedded_tor && tags+="with_embedded_tor,"
 
-	export TAGS="${tags%,}"
+	if [ -z "$tags" ]; then
+		export TAGS="''"
+	else
+		export TAGS="${tags%,}"
+	fi
 
 	export GOHOSTOS=$(go env GOHOSTOS)
 	export GOHOSTARCH=$(go env GOHOSTARCH)
