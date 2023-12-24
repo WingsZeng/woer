@@ -41,6 +41,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/0001-Observe-the-XDG-Base-Directory-Specification.patch
+)
+
 src_compile() {
 	# Make Mupdf specific for build
 	pushd mupdf || die
