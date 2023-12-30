@@ -1,0 +1,31 @@
+From d8a4046811c76f0333fb700035dc37d4a4690e93 Mon Sep 17 00:00:00 2001
+From: Wings <wings.xiangyi.zeng@gmail.com>
+Date: Sat, 30 Dec 2023 20:30:45 +0800
+Subject: [PATCH] fix: compattibility with libxkbcommon >= 1.6.0
+
+---
+ dlls/winewayland.drv/wayland_keyboard.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/dlls/winewayland.drv/wayland_keyboard.c b/dlls/winewayland.drv/wayland_keyboard.c
+index 9ad0fce0052..c7691c79b4f 100644
+--- a/dlls/winewayland.drv/wayland_keyboard.c
++++ b/dlls/winewayland.drv/wayland_keyboard.c
+@@ -349,10 +349,14 @@ static WCHAR dead_xkb_keysym_to_wchar(xkb_keysym_t xkb_keysym)
+     case XKB_KEY_dead_belowmacron: return 0x02CD;
+     case XKB_KEY_dead_belowtilde: return 0x02F7;
+     case XKB_KEY_dead_currency: return 0x00A4;
++/* The following four XKB_KEY_dead keys got removed in libxkbcommon 1.6.0
++   The define check is kind of version check here. */
++#ifdef XKB_KEY_dead_lowline
+     case XKB_KEY_dead_lowline: return 0x005F;
+     case XKB_KEY_dead_aboveverticalline: return 0x02C8;
+     case XKB_KEY_dead_belowverticalline: return 0x02CC;
+     case XKB_KEY_dead_longsolidusoverlay: return 0x002F;
++#endif
+     case XKB_KEY_dead_a: return 0x0061;
+     case XKB_KEY_dead_A: return 0x0041;
+     case XKB_KEY_dead_e: return 0x0065;
+-- 
+2.43.0
+
