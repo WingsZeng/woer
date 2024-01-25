@@ -1,0 +1,24 @@
+diff --git a/lib/os.rb b/lib/os.rb
+index 75b0e78..c65764d 100644
+--- a/lib/os.rb
++++ b/lib/os.rb
+@@ -253,15 +253,15 @@ class OS
+   end
+ 
+   def self.open_file_command
+-    if OS.doze? || OS.cygwin?
++    if OS.cygwin?
++      "cygstart"
++    elsif OS.doze?
+       "start"
+     elsif OS.mac?
+       "open"
+     else
+-      # linux...what about cygwin?
+       "xdg-open"
+     end
+-
+   end
+ 
+   def self.app_config_path(name)
+

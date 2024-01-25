@@ -1,0 +1,335 @@
+diff --git a/.rspec b/.rspec
+new file mode 100644
+index 0000000..2db9087
+--- /dev/null
++++ b/.rspec
+@@ -0,0 +1,4 @@
++--format documentation
++--require spec_helper
++--color
++--order random
+diff --git a/Gemfile.lock b/Gemfile.lock
+index d212592..2e6efd0 100644
+--- a/Gemfile.lock
++++ b/Gemfile.lock
+@@ -6,29 +6,33 @@ PATH
+ GEM
+   remote: http://rubygems.org/
+   specs:
+-    diff-lcs (1.1.3)
+-    power_assert (1.0.2)
+-    rake (0.9.6)
+-    rspec (2.5.0)
+-      rspec-core (~> 2.5.0)
+-      rspec-expectations (~> 2.5.0)
+-      rspec-mocks (~> 2.5.0)
+-    rspec-core (2.5.2)
+-    rspec-expectations (2.5.0)
+-      diff-lcs (~> 1.1.2)
+-    rspec-mocks (2.5.0)
+-    test-unit (3.2.3)
++    diff-lcs (1.5.0)
++    power_assert (2.0.2)
++    rake (10.5.0)
++    rspec (3.12.0)
++      rspec-core (~> 3.12.0)
++      rspec-expectations (~> 3.12.0)
++      rspec-mocks (~> 3.12.0)
++    rspec-core (3.12.0)
++      rspec-support (~> 3.12.0)
++    rspec-expectations (3.12.0)
++      diff-lcs (>= 1.2.0, < 2.0)
++      rspec-support (~> 3.12.0)
++    rspec-mocks (3.12.1)
++      diff-lcs (>= 1.2.0, < 2.0)
++      rspec-support (~> 3.12.0)
++    rspec-support (3.12.0)
++    test-unit (3.5.5)
+       power_assert
+ 
+ PLATFORMS
+-  ruby
+-  x86-mingw32
++  x86_64-darwin-19
+ 
+ DEPENDENCIES
+   os!
+-  rake (~> 0.8)
+-  rspec (~> 2.5.0)
+-  test-unit (~> 3.2.0)
++  rake (~> 10.5)
++  rspec (~> 3.12)
++  test-unit (~> 3.5)
+ 
+ BUNDLED WITH
+-   2.1.4
++   2.3.26
+diff --git a/os.gemspec b/os.gemspec
+index f361f9b..269517c 100644
+--- a/os.gemspec
++++ b/os.gemspec
+@@ -42,22 +42,7 @@ Gem::Specification.new do |s|
+   s.rubygems_version = "2.7.6".freeze
+   s.summary = "Simple and easy way to know if you're on windows or not (reliably), as well as how many bits the OS is, etc.".freeze
+ 
+-  if s.respond_to? :specification_version then
+-    s.specification_version = 4
+-
+-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+-      s.add_development_dependency(%q<rake>.freeze, ["~> 0.8"])
+-      s.add_development_dependency(%q<test-unit>.freeze, ["~> 3.2.0"])
+-      s.add_development_dependency(%q<rspec>.freeze, ["~> 2.5.0"])
+-    else
+-      s.add_dependency(%q<rake>.freeze, ["~> 0.8"])
+-      s.add_dependency(%q<test-unit>.freeze, ["~> 3.2.0"])
+-      s.add_dependency(%q<rspec>.freeze, ["~> 2.5.0"])
+-    end
+-  else
+-    s.add_dependency(%q<rake>.freeze, ["~> 0.8"])
+-    s.add_dependency(%q<test-unit>.freeze, ["~> 3.2.0"])
+-    s.add_dependency(%q<rspec>.freeze, ["~> 2.5.0"])
+-  end
++  s.add_development_dependency(%q<rake>.freeze, ["~> 10.5"])
++  s.add_development_dependency(%q<test-unit>.freeze, ["~> 3.5"])
++  s.add_development_dependency(%q<rspec>.freeze, ["~> 3.12"])
+ end
+-
+diff --git a/spec/config/rspec/rspec_core.rb b/spec/config/rspec/rspec_core.rb
+new file mode 100644
+index 0000000..10f8c98
+--- /dev/null
++++ b/spec/config/rspec/rspec_core.rb
+@@ -0,0 +1,17 @@
++# frozen_string_literal: true
++
++RSpec.configure do |config|
++  # RSpec v3+
++  # Enable flags like --only-failures and --next-failure
++  # config.example_status_persistence_file_path = '.rspec_status'
++
++  # RSpec v3+
++  # Disable RSpec exposing methods globally on `Module` and `main`
++  # config.disable_monkey_patching!
++
++  config.expect_with :rspec do |c|
++    c.syntax = :expect
++  end
++
++  config.expect_with :test_unit
++end
+diff --git a/spec/linux_spec.rb b/spec/linux_spec.rb
+index 938fe04..93ef7ab 100644
+--- a/spec/linux_spec.rb
++++ b/spec/linux_spec.rb
+@@ -1,38 +1,33 @@
+-require 'rubygems' if RUBY_VERSION < '1.9.0'
+-
+-require File.dirname(__FILE__) + '/../lib/os.rb' # load before sane to avoid sane being able to requir the gemified version...
+-require 'rspec' # rspec2
+-
+ describe 'For Linux, (Ubuntu, Ubuntu 10.04 LTS) ' do
+   before(:each) do
+-    ENV.should_receive(:[]).with('OS').any_number_of_times.and_return()
++    allow(ENV).to receive(:[]).with('OS')
+     ## Having difficulties finding a stub for RUBY_PLATFORM
+     #  Looking into something like: http://stackoverflow.com/questions/1698335/can-i-use-rspec-mocks-to-stub-out-version-constants
+     #  For now, simply using RbConfig::CONFIG
+     # Kernel.stub!(:const_get).with('RUBY_PLATFORM').and_return("i686-linux")
+-    RbConfig::CONFIG.stub!(:[]).with('host_os').and_return('linux_gnu')
+-    RbConfig::CONFIG.stub!(:[]).with('host_cpu').and_return('i686')
++    allow(RbConfig::CONFIG).to receive(:[]).with('host_os').and_return('linux_gnu')
++    allow(RbConfig::CONFIG).to receive(:[]).with('host_cpu').and_return('i686')
+   end
+ 
+   describe OS do
+     subject { OS } # class, not instance
+ 
+-    it { should be_linux }
+-    it { should be_posix }
++    it { is_expected.to be_linux }
++    it { is_expected.to be_posix }
+ 
+-    it { should_not be_mac }
+-    it { should_not be_osx }
+-    it { should_not be_windows }
++    it { is_expected.not_to be_mac }
++    it { is_expected.not_to be_osx }
++    it { is_expected.not_to be_windows }
+ 
+   end
+ 
+   describe OS::Underlying do
+     subject { OS::Underlying } # class, not instance
+ 
+-    it { should be_linux }
++    it { is_expected.to be_linux }
+ 
+-    it { should_not be_bsd }
+-    it { should_not be_windows }
++    it { is_expected.not_to be_bsd }
++    it { is_expected.not_to be_windows }
+   end
+ end
+ 
+diff --git a/spec/os_spec.rb b/spec/os_spec.rb
+index 5c485c5..8ed97b0 100644
+--- a/spec/os_spec.rb
++++ b/spec/os_spec.rb
+@@ -1,5 +1,3 @@
+-require File.expand_path('spec_helper.rb', File.dirname(__FILE__))
+-
+ describe "OS" do
+ 
+   it "identifies whether windows? or posix?" do
+@@ -19,7 +17,7 @@ describe "OS" do
+       assert OS.posix? == true
+       assert !OS::Underlying.windows?
+     else
+-      pending "create test"
++      skip "create test"
+     end
+   end
+ 
+@@ -37,7 +35,7 @@ describe "OS" do
+     elsif RUBY_PLATFORM =~ /i386/
+       assert OS.bits == 32
+     else
+-      pending "os bits not tested!" + RUBY_PLATFORM + ' ' +  RbConfig::CONFIG['host_os']
++      skip "os bits not tested!" + RUBY_PLATFORM + ' ' +  RbConfig::CONFIG['host_os']
+     end
+ 
+   end
+@@ -104,9 +102,9 @@ describe "OS" do
+ 
+   it "should tell you what the right /dev/null is" do
+     if OS.windows?
+-      OS.dev_null.should == "NUL"
++      expect(OS.dev_null).to eq("NUL")
+     else
+-      OS.dev_null.should == "/dev/null"
++      expect(OS.dev_null).to eq("/dev/null")
+     end
+   end
+ 
+@@ -144,19 +142,19 @@ describe "OS" do
+   end
+ 
+   it "should provide a path to directory for application config" do
+-    ENV.stub(:[])
++    allow(ENV).to receive(:[])
+     home = '/home/user'
+ 
+     if OS.mac?
+-      ENV.stub(:[]).with('HOME').and_return(home)
++      allow(ENV).to receive(:[]).with('HOME').and_return(home)
+       assert OS.app_config_path('appname') == "#{home}/Library/Application Support/appname"
+     elsif OS.doze?
+       # TODO
+     else
+-      ENV.stub(:[]).with('HOME').and_return(home)
++      allow(ENV).to receive(:[]).with('HOME').and_return(home)
+       assert OS.app_config_path('appname') == "#{home}/.config/appname"
+ 
+-      ENV.stub(:[]).with('XDG_CONFIG_HOME').and_return("#{home}/.config")
++      allow(ENV).to receive(:[]).with('XDG_CONFIG_HOME').and_return("#{home}/.config")
+       assert OS.app_config_path('appname') == "#{home}/.config/appname"
+     end
+   end
+@@ -176,14 +174,14 @@ describe OS, "provides access to to underlying config values" do
+   describe "#config, supplys the CONFIG hash" do
+     subject { OS.config }
+ 
+-    specify { subject.should be_a(Hash) }
++    specify { expect(subject).to be_a(Hash) }
+ 
+     it "should supply 'host_cpu'" do
+-      subject['host_cpu'].should eq(RbConfig::CONFIG['host_cpu'])
++      expect(subject['host_cpu']).to eq(RbConfig::CONFIG['host_cpu'])
+     end
+ 
+     it "should supply 'host_os'" do
+-      subject['host_os'].should eq(RbConfig::CONFIG['host_os'])
++      expect(subject['host_os']).to eq(RbConfig::CONFIG['host_os'])
+     end
+   end
+ 
+@@ -191,9 +189,9 @@ describe OS, "provides access to to underlying config values" do
+     %w(host host_cpu host_os).sort.each do |config_key|
+       it "should delegate '#{config_key}'" do
+         expected = "TEST #{config_key}"
+-        RbConfig::CONFIG.should_receive(:[]).with(config_key).and_return(expected)
++        expect(RbConfig::CONFIG).to receive(:[]).with(config_key).and_return(expected)
+ 
+-        OS.send(config_key).should == expected
++        expect(OS.send(config_key)).to eq(expected)
+       end
+     end
+   end
+diff --git a/spec/osx_spec.rb b/spec/osx_spec.rb
+index 20f7532..04b7f4d 100644
+--- a/spec/osx_spec.rb
++++ b/spec/osx_spec.rb
+@@ -1,30 +1,28 @@
+-require File.expand_path('spec_helper.rb', File.dirname(__FILE__))
+-
+ describe 'For OSX (Snow Leopard, 10.6),' do
+   before(:each) do
+-    ENV.stub!(:[]).with('OS').and_return(nil)
++    allow(ENV).to receive(:[]).with('OS').and_return(nil)
+     # Issues stubbing RUBY_PLATFORM, using RbConfig instead.
+     # Kernel.stub!(:RUBY_PLATFORM => "x86_64-darwin10.6")
+-    RbConfig::CONFIG.stub!(:[]).with('host_os').and_return("darwin10.6.0")
+-    RbConfig::CONFIG.stub!(:[]).with('host_cpu').and_return('i386')
++    allow(RbConfig::CONFIG).to receive(:[]).with('host_os').and_return("darwin10.6.0")
++    allow(RbConfig::CONFIG).to receive(:[]).with('host_cpu').and_return('i386')
+   end
+ 
+   describe OS do
+     subject { OS } # class, not instance
+ 
+-    it { should be_mac }
+-    it { should be_x } # OS.x?
+-    it { should be_osx }
+-    it { should be_posix }
++    it { is_expected.to be_mac }
++    it { is_expected.to be_x } # OS.x?
++    it { is_expected.to be_osx }
++    it { is_expected.to be_posix }
+ 
+-    it { should_not be_windows }
++    it { is_expected.not_to be_windows }
+ 
+   end
+ 
+   describe OS::Underlying do
+     subject { OS::Underlying } # class, not instance
+ 
+-    it { should be_bsd }
+-    it { should_not be_windows }
++    it { is_expected.to be_bsd }
++    it { is_expected.not_to be_windows }
+   end
+ end
+diff --git a/spec/spec_helper.rb b/spec/spec_helper.rb
+index 2fbe9dd..36cf044 100644
+--- a/spec/spec_helper.rb
++++ b/spec/spec_helper.rb
+@@ -1,10 +1,10 @@
+-require 'rubygems' if RUBY_VERSION < '1.9.0'
+-require File.expand_path('../lib/os.rb', File.dirname(__FILE__))
++# Third Party Libraries
++require 'rspec'
+ 
+-require 'rspec' # rspec2
+-require 'rspec/autorun'
++# This gem
++require 'os'
+ 
+-RSpec.configure do |config|
+-  config.expect_with :rspec, :stdlib # enable `should` OR `assert`
+-end
++# Library Configs
+ 
++# RSpec Configs
++require 'config/rspec/rspec_core'
+

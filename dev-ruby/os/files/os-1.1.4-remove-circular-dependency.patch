@@ -1,0 +1,113 @@
+diff --git a/Gemfile.lock b/Gemfile.lock
+index 77f97db..d212592 100644
+--- a/Gemfile.lock
++++ b/Gemfile.lock
+@@ -1,7 +1,7 @@
+ PATH
+   remote: .
+   specs:
+-    os (1.0.1)
++    os (1.1.4)
+ 
+ GEM
+   remote: http://rubygems.org/
+@@ -9,6 +9,14 @@ GEM
+     diff-lcs (1.1.3)
+     power_assert (1.0.2)
+     rake (0.9.6)
++    rspec (2.5.0)
++      rspec-core (~> 2.5.0)
++      rspec-expectations (~> 2.5.0)
++      rspec-mocks (~> 2.5.0)
++    rspec-core (2.5.2)
++    rspec-expectations (2.5.0)
++      diff-lcs (~> 1.1.2)
++    rspec-mocks (2.5.0)
+     test-unit (3.2.3)
+       power_assert
+ 
+@@ -17,9 +25,10 @@ PLATFORMS
+   x86-mingw32
+ 
+ DEPENDENCIES
++  os!
+   rake (~> 0.8)
+   rspec (~> 2.5.0)
+-  test-unit (~> 3)
++  test-unit (~> 3.2.0)
+ 
+ BUNDLED WITH
+    2.1.4
+diff --git a/os.gemspec b/os.gemspec
+index 77c26b9..f361f9b 100644
+--- a/os.gemspec
++++ b/os.gemspec
+@@ -46,21 +46,18 @@ Gem::Specification.new do |s|
+     s.specification_version = 4
+ 
+     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+-      s.add_runtime_dependency(%q<os>.freeze, [">= 0"])
+       s.add_development_dependency(%q<rake>.freeze, ["~> 0.8"])
+-      s.add_development_dependency(%q<test-unit>.freeze, ["~> 3"])
+-      s.add_development_dependency(%q<rspec>.freeze, [">= 2.0"])
++      s.add_development_dependency(%q<test-unit>.freeze, ["~> 3.2.0"])
++      s.add_development_dependency(%q<rspec>.freeze, ["~> 2.5.0"])
+     else
+-      s.add_dependency(%q<os>.freeze, [">= 0"])
+       s.add_dependency(%q<rake>.freeze, ["~> 0.8"])
+-      s.add_dependency(%q<test-unit>.freeze, ["~> 3"])
+-      s.add_dependency(%q<rspec>.freeze, [">= 2.0"])
++      s.add_dependency(%q<test-unit>.freeze, ["~> 3.2.0"])
++      s.add_dependency(%q<rspec>.freeze, ["~> 2.5.0"])
+     end
+   else
+-    s.add_dependency(%q<os>.freeze, [">= 0"])
+     s.add_dependency(%q<rake>.freeze, ["~> 0.8"])
+-    s.add_dependency(%q<test-unit>.freeze, ["~> 3"])
+-    s.add_dependency(%q<rspec>.freeze, [">= 2.0"])
++    s.add_dependency(%q<test-unit>.freeze, ["~> 3.2.0"])
++    s.add_dependency(%q<rspec>.freeze, ["~> 2.5.0"])
+   end
+ end
+ 
+diff --git a/spec/os_spec.rb b/spec/os_spec.rb
+index 3b2ea2f..5c485c5 100644
+--- a/spec/os_spec.rb
++++ b/spec/os_spec.rb
+@@ -121,7 +121,8 @@ describe "OS" do
+   it "has working cpu count method" do
+     cpu_count = OS.cpu_count
+     assert cpu_count >= 1
+-    assert (cpu_count & (cpu_count - 1)) == 0 # CPU count is normally a power of 2
++    # CPU count is usually either a power of 2 or an even number.
++    assert ((cpu_count & (cpu_count - 1)) == 0) || ((cpu_count % 2) == 0)
+   end
+ 
+   it "has working cpu count method with no env. variable" do
+@@ -144,18 +145,19 @@ describe "OS" do
+ 
+   it "should provide a path to directory for application config" do
+     ENV.stub(:[])
++    home = '/home/user'
+ 
+     if OS.mac?
+-      ENV.stub(:[]).with('HOME').and_return('/home/user')
+-      assert OS.app_config_path('appname') == '/home/xdg/Library/Application Support/appname'
++      ENV.stub(:[]).with('HOME').and_return(home)
++      assert OS.app_config_path('appname') == "#{home}/Library/Application Support/appname"
+     elsif OS.doze?
+       # TODO
+     else
+-      ENV.stub(:[]).with('HOME').and_return('/home/user')
+-      assert OS.app_config_path('appname') == '/home/user/.config/appname'
++      ENV.stub(:[]).with('HOME').and_return(home)
++      assert OS.app_config_path('appname') == "#{home}/.config/appname"
+ 
+-      ENV.stub(:[]).with('XDG_CONFIG_HOME').and_return('/home/xdg/.config')
+-      assert OS.app_config_path('appname') == '/home/xdg/.config/appname'
++      ENV.stub(:[]).with('XDG_CONFIG_HOME').and_return("#{home}/.config")
++      assert OS.app_config_path('appname') == "#{home}/.config/appname"
+     end
+   end
+ 
+
