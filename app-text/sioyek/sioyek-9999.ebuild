@@ -10,13 +10,17 @@ HOMEPAGE="https://github.com/ahrm/sioyek"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="qt6"
+IUSE="qt6 development"
 KEYWORDS="~amd64"
 
 RDEPEND="
 	media-libs/harfbuzz
+	dev-libs/gumbo
 	qt6? (
 		dev-qt/qtbase[gui,widgets,network,opengl]
+		development? (
+			dev-qt/qtspeech
+		)
 	)
 	!qt6? (
 		dev-qt/qtcore
@@ -24,6 +28,10 @@ RDEPEND="
 		dev-qt/qtgui
 		dev-qt/qtwidgets
 		dev-qt/qtnetwork
+		dev-qt/qtdbus
+		development? (
+			dev-qt/qtspeech:5
+		)
 	)
 "
 
@@ -32,18 +40,31 @@ DEPEND="
 "
 
 BDEPEND="
-	media-libs/glu
+	dev-lang/mujs
+	virtual/glu
 	qt6? (
 		dev-qt/qt3d
 	)
 	!qt6? (
-		=dev-qt/qt3d-5.15.11
+		dev-qt/qt3d:5
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/0001-Observe-the-XDG-Base-Directory-Specification.patch
-)
+PATCHES+=( "${FILESDIR}/0001-use-submodule-mupdf-to-build-on-linux.patch" )
+
+src_unpack() {
+	if use development; then
+		EGIT_BRANCH=development
+	fi
+	git-r3_src_unpack
+}
+
+src_prepare() {
+    default
+    if ! use development; then
+    	PATCHES+=( "${FILESDIR}"/0001-Observe-the-XDG-Base-Directory-Specification.patch )
+    fi
+}
 
 src_compile() {
 	# Make Mupdf specific for build
@@ -52,25 +73,23 @@ src_compile() {
 	popd || die
 
 	if use qt6; then
-		eqmake6 "CONFIG+=linux_app_image" pdf_viewer_build_config.pro
+		eqmake6 pdf_viewer_build_config.pro
 	else
-		eqmake5 "CONFIG+=linux_app_image" pdf_viewer_build_config.pro
+		eqmake5 pdf_viewer_build_config.pro
 	fi
 	emake
 }
+
 src_install() {
-	# intall bin, default config files and shaders
-	insinto /opt/sioyek
-	doins sioyek tutorial.pdf pdf_viewer/keys.config pdf_viewer/prefs.config
-	fperms +x /opt/sioyek/sioyek
-	insinto /opt/sioyek/shaders
-	doins pdf_viewer/shaders/*
-
-	# symlink to /usr/bin
-	dosym /opt/sioyek/sioyek /usr/bin/sioyek
-
-	domenu "${FILESDIR}/sioyek.desktop"
+	dobin sioyek
+	domenu resources/sioyek.desktop
 	doicon resources/sioyek-icon-linux.png
+	insinto /usr/share/sioyek
+	doins tutorial.pdf
+	insinto /usr/share/sioyek/shaders
+	doins pdf_viewer/shaders/*
+	insinto /etc/sioyek
+	doins pdf_viewer/keys.config pdf_viewer/prefs.config
 	doman resources/sioyek.1
 }
 

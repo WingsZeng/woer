@@ -1,0 +1,25 @@
+From 4023ec8b01e6a974ad7137a2e3557855e5ab826e Mon Sep 17 00:00:00 2001
+From: Wings <wings.xiangyi.zeng@gmail.com>
+Date: Sat, 30 Mar 2024 14:49:34 +0800
+Subject: [PATCH] use submodule mupdf to build on linux
+
+---
+ pdf_viewer_build_config.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pdf_viewer_build_config.pro b/pdf_viewer_build_config.pro
+index a09b861..7c8711b 100644
+--- a/pdf_viewer_build_config.pro
++++ b/pdf_viewer_build_config.pro
+@@ -92,7 +92,7 @@ unix:!mac {
+     } else {
+         DEFINES += NON_PORTABLE
+         DEFINES += LINUX_STANDARD_PATHS
+-        LIBS += -ldl -lmupdf -lmupdf-third -lgumbo -lharfbuzz -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjp2 -lz
++        LIBS += -ldl -Lmupdf/build/release -lmupdf -lmupdf-third -lgumbo -lharfbuzz -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjp2 -lz
+     }
+ 
+     isEmpty(PREFIX){
+-- 
+2.43.0
+
