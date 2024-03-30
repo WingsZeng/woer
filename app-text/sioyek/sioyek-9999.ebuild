@@ -16,10 +16,11 @@ KEYWORDS="~amd64"
 RDEPEND="
 	media-libs/harfbuzz
 	qt6? (
-		dev-qt/qtbase[gui,widgets,network]
+		dev-qt/qtbase[gui,widgets,network,opengl]
 	)
 	!qt6? (
 		dev-qt/qtcore
+		dev-qt/qtopengl
 		dev-qt/qtgui
 		dev-qt/qtwidgets
 		dev-qt/qtnetwork
@@ -31,12 +32,11 @@ DEPEND="
 "
 
 BDEPEND="
+	media-libs/glu
 	qt6? (
-		dev-qt/qtbase[opengl]
 		dev-qt/qt3d
 	)
 	!qt6? (
-		dev-qt/qtopengl
 		=dev-qt/qt3d-5.15.11
 	)
 "
