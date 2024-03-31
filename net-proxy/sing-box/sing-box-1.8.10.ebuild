@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,13 +8,10 @@ inherit go-module
 DESCRIPTION="The universal proxy platform"
 HOMEPAGE="https://sing-box.sagernet.org"
 
-MY_PV=${PV%-r1}-rc.1
-MY_P=${PN}-${MY_PV}
 SRC_URI="
-	https://github.com/SagerNet/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz
-	https://github.com/WingsZeng/sing-box-go-deps/releases/download/${MY_PV}/${MY_P}-deps.tar.xz
+	https://github.com/SagerNet/${PN}/archive/refs/tags/v${PV}.tar.gz
+	https://github.com/WingsZeng/sing-box-go-deps/releases/download/v${PV}/${P}-deps.tar.xz
 "
-S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -38,11 +35,6 @@ BDEPEND="
 		>=dev-lang/go-1.20.0
 	)
 "
-
-src_test() {
-	# This will fail when checking go module version, do not know why.
-	default
-}
 
 src_configure() {
 	local tags=""
