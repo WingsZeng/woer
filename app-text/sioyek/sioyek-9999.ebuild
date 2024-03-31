@@ -11,7 +11,6 @@ HOMEPAGE="https://github.com/ahrm/sioyek"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="qt6 development"
-KEYWORDS="~amd64"
 
 RDEPEND="
 	media-libs/harfbuzz
