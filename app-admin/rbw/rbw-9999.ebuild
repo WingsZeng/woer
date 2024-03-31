@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://git.tozt.net/rbw"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="uri"
+IUSE="+uri"
 
 DEPEND="
 	app-crypt/pinentry
