@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake python-r1
 
@@ -20,7 +20,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 # The entire source code is Apache-2.0, except for fastboot which is BSD-2.
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="python udev"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -47,8 +47,6 @@ DOCS=()
 
 src_prepare() {
 	eapply "${DISTDIR}/${PN}-31.0.3-no-gtest.patch"
-	eapply "${FILESDIR}/${PN}-34.0.0-protobuf.patch"
-	eapply "${FILESDIR}/${PN}-34.0.1-include-algorithm.patch"
 
 	cd "${S}/vendor/core" || die
 	eapply "${S}/patches/core/0011-Remove-the-useless-dependency-on-gtest.patch"
@@ -67,6 +65,11 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		# Statically link the bundled boringssl
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+		-DCMAKE_C_FLAGS="$CFLAGS" \
+		-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
+		-Dprotobuf_MODULE_COMPATIBLE=ON
 		-DBUILD_SHARED_LIBS=OFF
 	)
 	cmake_src_configure
