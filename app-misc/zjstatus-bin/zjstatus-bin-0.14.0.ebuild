@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="A configurable statusbar plugin for zellij"
 HOMEPAGE="https://github.com/dj95/zjstatus/"
-SRC_URI="https://github.com/dj95/zjstatus/releases/download/v${PV}/zjstatus.wasm"
+SRC_URI="https://github.com/dj95/zjstatus/releases/download/v${PV}/zjstatus.wasm -> ${P}.wasm"
 
 LICENSE="MIT"
 SLOT="0"
@@ -17,7 +17,7 @@ BDEPEND=""
 
 src_unpack() {
 	mkdir "${S}"
-	cp "${DISTDIR}/zjstatus.wasm" "${S}"/
+	cp "${DISTDIR}/${P}.wasm" "${S}/zjstatus.wasm"
 }
 
 src_install() {
