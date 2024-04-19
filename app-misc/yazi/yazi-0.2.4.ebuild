@@ -307,7 +307,7 @@ CRATES="
 	zune-inflate@0.2.54
 "
 
-inherit cargo
+inherit cargo desktop xdg
 
 DESCRIPTION="Blazing fast terminal file manager written in Rust, based on async I/O."
 HOMEPAGE="https://github.com/sxyazi/yazi"
@@ -330,4 +330,11 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 src_install() {
 	dobin target/$(usex debug debug release)/yazi
+
+	newicon assets/logo.png ${PN}.png
+	domenu assets/${PN}.desktop
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
 }
