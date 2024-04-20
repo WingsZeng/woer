@@ -293,7 +293,7 @@ DESCRIPTION="A simple wayland native screenshot tool inspired by Flameshot."
 HOMEPAGE="https://github.com/Kirottu/watershot"
 SRC_URI="
 	${CARGO_CRATE_URIS}
-	https://github.com/Kirottu/watershot/archive/refs/tags/v${PV}.tar.gz
+	https://github.com/Kirottu/watershot/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
 # License set may be more restrictive as OR is not respected

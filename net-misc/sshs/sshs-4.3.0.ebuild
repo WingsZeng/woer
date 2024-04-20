@@ -133,7 +133,7 @@ DESCRIPTION="Terminal user interface for SSH"
 HOMEPAGE="https://github.com/quantumsheep/sshs"
 SRC_URI="
 	${CARGO_CRATE_URIS}
-	https://github.com/quantumsheep/sshs/archive/refs/tags/${PV}.tar.gz
+	https://github.com/quantumsheep/sshs/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 Boost-1.0 MIT MPL-2.0 Unicode-DFS-2016 Unlicense"

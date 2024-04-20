@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="qutebrowser userscript for Bitwarden integration with rbw"
 HOMEPAGE="https://github.com/WingsZeng/qute-rbw/tree/master"
-SRC_URI="https://github.com/WingsZeng/qute-rbw/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/WingsZeng/qute-rbw/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

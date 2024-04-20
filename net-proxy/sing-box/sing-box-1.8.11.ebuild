@@ -9,7 +9,7 @@ DESCRIPTION="The universal proxy platform"
 HOMEPAGE="https://sing-box.sagernet.org"
 
 SRC_URI="
-	https://github.com/SagerNet/${PN}/archive/refs/tags/v${PV}.tar.gz
+	https://github.com/SagerNet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/WingsZeng/sing-box-go-deps/releases/download/v${PV}/${P}-deps.tar.xz
 "
 

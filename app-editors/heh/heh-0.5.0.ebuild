@@ -121,7 +121,7 @@ DESCRIPTION="A cross-platform terminal UI used for modifying file data in hex or
 HOMEPAGE="https://github.com/ndd7xv/heh"
 SRC_URI="
 	${CARGO_CRATE_URIS}
-	https://github.com/ndd7xv/heh/archive/refs/tags/v${PV}.tar.gz
+	https://github.com/ndd7xv/heh/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 Boost-1.0 MIT Unicode-DFS-2016"
