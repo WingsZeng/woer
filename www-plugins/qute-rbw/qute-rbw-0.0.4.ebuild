@@ -13,7 +13,7 @@ KEYWORDS="~amd64"
 
 DEPEND="
 	www-client/qutebrowser
-	app-admin/rbw[uri]
+	>=app-admin/rbw-1.10.0
 	dev-python/tldextract
 "
 RDEPEND="
