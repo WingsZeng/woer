@@ -40,13 +40,7 @@ BDEPEND="
 		kde-frameworks/extra-cmake-modules
 	)"
 
-src_configure() {
-	local mycmakeargs=(
-		-DGLFW_BUILD_EXAMPLES=no
-		-DGLFW_BUILD_WAYLAND=$(usex wayland)
-		-DGLFW_BUILD_X11=$(usex X)
-	)
-
+src_prepare() {
 	if use wayland; then
 		PATCHES+=(
 			${FILESDIR}/0001-Key-Modifiers-Fix.patch
@@ -56,6 +50,16 @@ src_configure() {
 			${FILESDIR}/0005-Avoid-error-on-startup.patch
 		)
 	fi
+
+	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DGLFW_BUILD_EXAMPLES=no
+		-DGLFW_BUILD_WAYLAND=$(usex wayland)
+		-DGLFW_BUILD_X11=$(usex X)
+	)
 
 	cmake-multilib_src_configure
 }
