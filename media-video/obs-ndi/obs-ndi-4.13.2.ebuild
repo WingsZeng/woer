@@ -3,6 +3,7 @@
 
 EAPI=8
 
+# FIX: use qmake
 inherit cmake
 
 DESCRIPTION="OBS plugin to integrate with the NDI SDK"
@@ -12,7 +13,7 @@ SRC_URI="https://github.com/obs-ndi/obs-ndi/archive/refs/tags/${PV}.tar.gz -> ${
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="debug"
+IUSE="debug doc"
 
 DEPEND="
 	dev-qt/qtbase:6
@@ -50,5 +51,7 @@ src_install() {
 	insinto "/usr/share/obs/obs-plugins/${PN}"
 	doins -r "../${P}/data/locale"
 
-	dodoc README.md
+	if use doc; then
+		dodoc README.md
+	fi
 }
