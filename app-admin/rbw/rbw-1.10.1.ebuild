@@ -38,7 +38,6 @@ CRATES="
 	cbc@0.1.2
 	cc@1.0.95
 	cfg-if@1.0.0
-	cfg_aliases@0.1.1
 	cipher@0.4.4
 	clap@4.5.4
 	clap_builder@4.5.2
@@ -117,7 +116,6 @@ CRATES="
 	mime@0.3.17
 	miniz_oxide@0.7.2
 	mio@0.8.11
-	nix@0.28.0
 	num-bigint-dig@0.8.4
 	num-integer@0.1.46
 	num-iter@0.1.44
@@ -163,7 +161,7 @@ CRATES="
 	rmpv@1.0.2
 	rsa@0.9.6
 	rustc-demangle@0.1.23
-	rustix@0.38.32
+	rustix@0.38.33
 	rustls@0.22.4
 	rustls-native-certs@0.7.0
 	rustls-pemfile@2.1.2
@@ -298,7 +296,7 @@ SRC_URI="
 
 LICENSE="MIT"
 # Dependent crate licenses
-LICENSE+=" Apache-2.0 BSD-2 BSD Boost-1.0 ISC MIT Unicode-DFS-2016"
+LICENSE+="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 ISC MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
 IUSE=""
 KEYWORDS="~amd64"
