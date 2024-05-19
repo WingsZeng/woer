@@ -23,7 +23,6 @@ CRATES="
 	approx@0.5.1
 	arrayvec@0.7.4
 	ash@0.37.3+1.3.251
-	async-trait@0.1.73
 	autocfg@1.1.0
 	backtrace@0.3.69
 	base64@0.21.4
@@ -51,7 +50,6 @@ CRATES="
 	colorchoice@1.0.0
 	com-rs@0.2.1
 	const-cstr@0.3.0
-	convert_case@0.4.0
 	core-foundation@0.9.3
 	core-foundation-sys@0.8.4
 	core-graphics-types@0.1.2
@@ -64,7 +62,6 @@ CRATES="
 	derive-new@0.5.9
 	derive_more@0.99.17
 	dlib@0.5.2
-	doc-comment@0.3.3
 	downcast-rs@1.2.0
 	either@1.9.0
 	env_logger@0.10.0
@@ -80,15 +77,6 @@ CRATES="
 	foreign-types@0.5.0
 	foreign-types-macros@0.2.3
 	foreign-types-shared@0.3.1
-	futures@0.3.28
-	futures-channel@0.3.28
-	futures-core@0.3.28
-	futures-executor@0.3.28
-	futures-io@0.3.28
-	futures-macro@0.3.28
-	futures-sink@0.3.28
-	futures-task@0.3.28
-	futures-util@0.3.28
 	getrandom@0.2.10
 	gimli@0.28.0
 	glob@0.3.1
@@ -106,10 +94,9 @@ CRATES="
 	hassle-rs@0.10.0
 	heck@0.4.1
 	hermit-abi@0.3.3
-	hex@0.4.3
 	hexf-parse@0.2.1
-	hyprland@0.3.12
-	hyprland-macros@0.3.4
+	hyprland@0.4.0-alpha.2
+	hyprland-macros@0.4.0-alpha.1
 	iana-time-zone@0.1.57
 	iana-time-zone-haiku@0.1.2
 	image@0.24.7
@@ -149,12 +136,11 @@ CRATES="
 	nom@7.1.3
 	num-integer@0.1.45
 	num-rational@0.4.1
-	num-traits@0.2.16
-	num_cpus@1.16.0
+	num-traits@0.2.19
 	objc@0.2.7
 	objc_exception@0.1.2
 	object@0.32.1
-	once_cell@1.18.0
+	once_cell@1.19.0
 	ordered-float@3.9.1
 	os_pipe@1.1.4
 	owned_ttf_parser@0.19.0
@@ -163,7 +149,6 @@ CRATES="
 	paste@1.0.14
 	petgraph@0.6.4
 	pin-project-lite@0.2.13
-	pin-utils@0.1.0
 	pkg-config@0.3.27
 	png@0.17.10
 	pollster@0.3.0
@@ -180,27 +165,23 @@ CRATES="
 	rayon@1.8.0
 	rayon-core@1.12.0
 	redox_syscall@0.3.5
-	regex@1.9.5
-	regex-automata@0.3.8
-	regex-syntax@0.7.5
+	regex@1.10.4
+	regex-automata@0.4.6
+	regex-syntax@0.8.3
 	renderdoc-sys@1.0.0
 	ron@0.8.1
 	rustc-demangle@0.1.23
 	rustc-hash@1.1.0
-	rustc_version@0.4.0
 	rustix@0.38.14
 	rustversion@1.0.14
 	ryu@1.0.15
 	scoped-tls@1.0.1
 	scopeguard@1.2.0
-	semver@1.0.19
 	serde@1.0.188
 	serde_derive@1.0.188
 	serde_json@1.0.107
 	serde_repr@0.1.16
-	signal-hook-registry@1.4.1
 	simd-adler32@0.3.7
-	slab@0.4.9
 	slotmap@1.0.6
 	smallvec@1.11.1
 	smithay-client-toolkit@0.17.0
@@ -217,7 +198,6 @@ CRATES="
 	thiserror@1.0.48
 	thiserror-impl@1.0.48
 	tokio@1.32.0
-	tokio-macros@2.1.0
 	tree_magic_mini@3.0.3
 	ttf-parser@0.19.2
 	twox-hash@1.6.3
@@ -285,7 +265,7 @@ CRATES="
 	yeslogic-fontconfig-sys@4.0.1
 "
 
-inherit cargo shell-completion
+inherit cargo
 
 DESCRIPTION="A simple wayland native screenshot tool inspired by Flameshot."
 # Double check the homepage as the cargo_metadata crate
@@ -307,9 +287,14 @@ DEPEND="
 	x11-libs/libxkbcommon[wayland]
 	gui-apps/grim
 	media-libs/vulkan-loader
+	>=gui-wm/hyprland-0.40.0
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.2.2-hyprland-0.40.0.patch"
+)
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /

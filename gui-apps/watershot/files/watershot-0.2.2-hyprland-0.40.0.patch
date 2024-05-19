@@ -1,0 +1,24 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 53f908b..077d794 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -26,5 +26,5 @@ pollster = "0.3.0"
+ bytemuck = { version = "1.13.1", features = ["derive"] }
+ wgpu_text = "0.8.3"
+ regex = "1.9.1"
+-hyprland = "0.3.12"
++hyprland = "0.4.0-alpha.2"
+ strum = { version = "0.25.0", features = ["derive", "strum_macros"] }
+diff --git a/src/window/hyprland.rs b/src/window/hyprland.rs
+index 9b1f2b9..19e1ec6 100644
+--- a/src/window/hyprland.rs
++++ b/src/window/hyprland.rs
+@@ -23,7 +23,7 @@ impl CompositorBackend for HyprlandBackend {
+ 
+         let mut windows: Vec<_> = Clients::get()
+             .unwrap()
+-            .filter(|client| active_workspace_ids.contains(&client.workspace.id))
++            .into_iter().filter(|client| active_workspace_ids.contains(&client.workspace.id))
+             .map(WindowDescriptor::from)
+             .collect();
+
