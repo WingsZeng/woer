@@ -13,7 +13,7 @@ HYPRLAND_PV=${PV%.*}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+flash shrink X"
+IUSE="+flash +shrink X"
 
 DEPEND="
 	X? ( gui-wm/hyprland[X] )
