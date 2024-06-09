@@ -161,7 +161,7 @@ CRATES="
 	rmpv@1.0.2
 	rsa@0.9.6
 	rustc-demangle@0.1.23
-	rustix@0.38.33
+	rustix@0.38.34
 	rustls@0.22.4
 	rustls-native-certs@0.7.0
 	rustls-pemfile@2.1.2
