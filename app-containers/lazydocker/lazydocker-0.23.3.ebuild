@@ -5,7 +5,7 @@ EAPI=8
 
 inherit go-module
 
-COMMIT="1060e17"
+COMMIT="152b365"
 
 DESCRIPTION="Lazier way to manage everything docker"
 HOMEPAGE="https://github.com/jesseduffield/lazydocker"
