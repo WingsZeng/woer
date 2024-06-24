@@ -1,0 +1,34 @@
+From 6750b73bb0ab70548640883b8ba48e01b52b072d Mon Sep 17 00:00:00 2001
+From: dimtpap <dimtpap@protonmail.com>
+Date: Mon, 11 Mar 2024 09:06:40 +0200
+Subject: [PATCH] Use GNUInstallDirs
+
+Closes #51
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 836d741..db294d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,8 @@
+ cmake_minimum_required(VERSION 3.10)
+ project(linux-pipewire-audio)
+ 
++include(GNUInstallDirs)
++
+ set(linux-pipewire-audio_SOURCES
+ 			src/linux-pipewire-audio.c
+ 			src/pipewire-audio.h
+@@ -38,5 +40,5 @@ include_directories(SYSTEM
+ 
+ set_target_properties(linux-pipewire-audio PROPERTIES PREFIX "")
+ 
+-install(TARGETS linux-pipewire-audio LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/obs-plugins)
++install(TARGETS linux-pipewire-audio LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/obs-plugins)
+ install(DIRECTORY data/locale DESTINATION ${CMAKE_INSTALL_PREFIX}/share/obs/obs-plugins/linux-pipewire-audio)
+\ No newline at end of file
+-- 
+2.45.2
+
