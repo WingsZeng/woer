@@ -32,7 +32,6 @@ CRATES="
 	bitflags@2.4.0
 	block@0.1.6
 	bumpalo@3.14.0
-	bytecount@0.6.3
 	bytemuck@1.14.0
 	bytemuck_derive@1.5.0
 	byteorder@1.4.3
@@ -59,15 +58,13 @@ CRATES="
 	crossbeam-epoch@0.9.15
 	crossbeam-utils@0.8.16
 	d3d12@0.7.0
-	derive-new@0.5.9
 	derive_more@0.99.17
 	dlib@0.5.2
 	downcast-rs@1.2.0
 	either@1.9.0
 	env_logger@0.10.0
 	equivalent@1.0.1
-	errno@0.3.3
-	errno-dragonfly@0.1.2
+	errno@0.3.9
 	fastrand@2.0.1
 	fdeflate@0.3.0
 	fixedbitset@0.4.2
@@ -95,6 +92,7 @@ CRATES="
 	heck@0.4.1
 	hermit-abi@0.3.3
 	hexf-parse@0.2.1
+	home@0.5.9
 	hyprland@0.4.0-alpha.2
 	hyprland-macros@0.4.0-alpha.1
 	iana-time-zone@0.1.57
@@ -110,14 +108,14 @@ CRATES="
 	js-sys@0.3.64
 	khronos-egl@4.1.0
 	lazy_static@1.4.0
-	libc@0.2.148
+	libc@0.2.155
 	libloading@0.7.4
 	libloading@0.8.0
 	libwebp-sys@0.9.4
 	linked-hash-map@0.5.6
-	linux-raw-sys@0.4.7
+	linux-raw-sys@0.4.14
 	lock_api@0.4.10
-	log@0.4.20
+	log@0.4.22
 	malloc_buf@0.0.6
 	memchr@2.6.3
 	memmap2@0.5.10
@@ -130,7 +128,6 @@ CRATES="
 	miniz_oxide@0.7.1
 	mio@0.8.8
 	naga@0.13.0
-	nix@0.24.3
 	nix@0.25.1
 	nix@0.26.4
 	nom@7.1.3
@@ -142,7 +139,7 @@ CRATES="
 	object@0.32.1
 	once_cell@1.19.0
 	ordered-float@3.9.1
-	os_pipe@1.1.4
+	os_pipe@1.2.0
 	owned_ttf_parser@0.19.0
 	parking_lot@0.12.1
 	parking_lot_core@0.9.8
@@ -156,6 +153,7 @@ CRATES="
 	proc-macro2@1.0.67
 	profiling@1.0.11
 	quick-xml@0.28.2
+	quick-xml@0.31.0
 	quote@1.0.33
 	rand@0.8.5
 	rand_chacha@0.3.1
@@ -165,14 +163,14 @@ CRATES="
 	rayon@1.8.0
 	rayon-core@1.12.0
 	redox_syscall@0.3.5
-	regex@1.10.4
-	regex-automata@0.4.6
-	regex-syntax@0.8.3
+	regex@1.10.5
+	regex-automata@0.4.7
+	regex-syntax@0.8.4
 	renderdoc-sys@1.0.0
 	ron@0.8.1
 	rustc-demangle@0.1.23
 	rustc-hash@1.1.0
-	rustix@0.38.14
+	rustix@0.38.34
 	rustversion@1.0.14
 	ryu@1.0.15
 	scoped-tls@1.0.1
@@ -193,12 +191,12 @@ CRATES="
 	strum_macros@0.25.2
 	syn@1.0.109
 	syn@2.0.37
-	tempfile@3.8.0
+	tempfile@3.10.1
 	termcolor@1.3.0
 	thiserror@1.0.48
 	thiserror-impl@1.0.48
 	tokio@1.32.0
-	tree_magic_mini@3.0.3
+	tree_magic_mini@3.1.5
 	ttf-parser@0.19.2
 	twox-hash@1.6.3
 	unicode-ident@1.0.12
@@ -215,17 +213,18 @@ CRATES="
 	wasm-bindgen-macro-support@0.2.87
 	wasm-bindgen-shared@0.2.87
 	wayland-backend@0.1.2
-	wayland-client@0.29.5
+	wayland-backend@0.3.4
 	wayland-client@0.30.2
-	wayland-commons@0.29.5
+	wayland-client@0.31.3
 	wayland-cursor@0.30.0
-	wayland-protocols@0.29.5
 	wayland-protocols@0.30.1
+	wayland-protocols@0.32.1
 	wayland-protocols-wlr@0.1.0
-	wayland-scanner@0.29.5
+	wayland-protocols-wlr@0.3.1
 	wayland-scanner@0.30.1
-	wayland-sys@0.29.5
+	wayland-scanner@0.31.2
 	wayland-sys@0.30.1
+	wayland-sys@0.31.2
 	web-sys@0.3.64
 	webp@0.2.6
 	wgpu@0.17.0
@@ -241,27 +240,36 @@ CRATES="
 	windows@0.44.0
 	windows@0.48.0
 	windows-sys@0.48.0
+	windows-sys@0.52.0
 	windows-targets@0.42.2
 	windows-targets@0.48.5
+	windows-targets@0.52.5
 	windows_aarch64_gnullvm@0.42.2
 	windows_aarch64_gnullvm@0.48.5
+	windows_aarch64_gnullvm@0.52.5
 	windows_aarch64_msvc@0.42.2
 	windows_aarch64_msvc@0.48.5
+	windows_aarch64_msvc@0.52.5
 	windows_i686_gnu@0.42.2
 	windows_i686_gnu@0.48.5
+	windows_i686_gnu@0.52.5
+	windows_i686_gnullvm@0.52.5
 	windows_i686_msvc@0.42.2
 	windows_i686_msvc@0.48.5
+	windows_i686_msvc@0.52.5
 	windows_x86_64_gnu@0.42.2
 	windows_x86_64_gnu@0.48.5
+	windows_x86_64_gnu@0.52.5
 	windows_x86_64_gnullvm@0.42.2
 	windows_x86_64_gnullvm@0.48.5
+	windows_x86_64_gnullvm@0.52.5
 	windows_x86_64_msvc@0.42.2
 	windows_x86_64_msvc@0.48.5
-	wl-clipboard-rs@0.7.0
+	windows_x86_64_msvc@0.52.5
+	wl-clipboard-rs@0.9.0
 	xcursor@0.3.4
 	xi-unicode@0.3.0
 	xkbcommon@0.5.1
-	xml-rs@0.8.19
 	yeslogic-fontconfig-sys@4.0.1
 "
 
@@ -293,7 +301,9 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.2.2-hyprland-0.40.0.patch"
+	"${FILESDIR}/${PN}-0.2.2-update-for-hyprland-0.40.0.patch"
+	"${FILESDIR}/${PN}-0.2.2-update-hyprland-lock.patch"
+	"${FILESDIR}/${PN}-0.2.2-update-wl-clipboard-rs-to-0.9.0.patch"
 )
 
 # rust does not use *FLAGS from make.conf, silence portage warning
