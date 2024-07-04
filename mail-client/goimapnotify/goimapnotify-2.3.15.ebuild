@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.com/shackra/goimapnotify"
 
 SRC_URI="
 	https://gitlab.com/shackra/${PN}/-/archive/${PV}/${P}.tar.gz
-	https://github.com/WingsZeng/goimapnotify-go-deps/releases/download/${PV}/${P}-deps.tar.xz
+	https://github.com/WingsZeng/goimapnotify-go-deps/releases/download/v${PV}/${P}-deps.tar.xz
 "
 
 LICENSE="GPL-3"
