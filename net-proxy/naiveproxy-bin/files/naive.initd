@@ -9,7 +9,7 @@ command_args="/etc/naive/config.json"
 pidfile="/run/${RC_SVCNAME}.pid"
 command_background="yes"
 command_user="naive"
-output_log="/var/log/naive.log"
+error_log="/var/log/naive.log"
 
 depend() {
 	need net
