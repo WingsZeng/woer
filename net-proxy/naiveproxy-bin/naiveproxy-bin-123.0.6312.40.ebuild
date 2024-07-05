@@ -31,3 +31,12 @@ src_install() {
 	doins config.json
 	newinitd "${FILESDIR}/naive.initd" naive
 }
+
+pkg_postinst() {
+    einfo "Creating log file and setting permissions"
+
+    touch /var/log/naive.log
+
+    chown naive:naive /var/log/naive.log
+    chmod 644 /var/log/naive.log
+}
