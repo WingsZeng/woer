@@ -7,26 +7,25 @@ EAPI=8
 
 CRATES="
 	ahash@0.8.11
-	aho-corasick@1.1.2
-	allocator-api2@0.2.16
-	anstream@0.6.13
-	anstyle@1.0.6
-	anstyle-parse@0.2.3
-	anstyle-query@1.0.2
-	anstyle-wincon@3.0.2
-	anyhow@1.0.81
-	autocfg@1.1.0
-	bitflags@1.3.2
-	bitflags@2.4.2
+	aho-corasick@1.1.3
+	allocator-api2@0.2.18
+	anstream@0.6.14
+	anstyle@1.0.7
+	anstyle-parse@0.2.4
+	anstyle-query@1.1.0
+	anstyle-wincon@3.0.3
+	anyhow@1.0.86
+	autocfg@1.3.0
+	bitflags@2.6.0
 	block-buffer@0.10.4
 	cassowary@0.3.0
 	castaway@0.2.2
 	cfg-if@1.0.0
-	clap@4.5.2
-	clap_builder@4.5.2
-	clap_derive@4.5.0
-	clap_lex@0.7.0
-	colorchoice@1.0.0
+	clap@4.5.8
+	clap_builder@4.5.8
+	clap_derive@4.5.8
+	clap_lex@0.7.1
+	colorchoice@1.0.1
 	compact_str@0.7.1
 	cpufeatures@0.2.12
 	crossterm@0.27.0
@@ -35,71 +34,71 @@ CRATES="
 	digest@0.10.7
 	dirs@5.0.1
 	dirs-sys@0.4.1
-	either@1.10.0
+	either@1.13.0
 	fuzzy-matcher@0.3.7
 	generic-array@0.14.7
-	getrandom@0.2.12
+	getrandom@0.2.15
 	glob@0.3.1
-	handlebars@5.1.0
-	hashbrown@0.14.3
-	heck@0.4.1
-	indoc@2.0.4
+	handlebars@5.1.2
+	hashbrown@0.14.5
+	heck@0.5.0
+	is_terminal_polyfill@1.70.0
 	itertools@0.12.1
-	itoa@1.0.10
-	libc@0.2.153
-	libredox@0.0.1
-	lock_api@0.4.11
-	log@0.4.21
+	itoa@1.0.11
+	libc@0.2.155
+	libredox@0.1.3
+	lock_api@0.4.12
+	log@0.4.22
 	lru@0.12.3
-	memchr@2.7.1
+	memchr@2.7.4
 	mio@0.8.11
 	once_cell@1.19.0
 	option-ext@0.2.0
-	parking_lot@0.12.1
-	parking_lot_core@0.9.9
-	paste@1.0.14
-	pest@2.7.8
-	pest_derive@2.7.8
-	pest_generator@2.7.8
-	pest_meta@2.7.8
-	proc-macro2@1.0.79
-	quote@1.0.35
-	ratatui@0.26.1
-	redox_syscall@0.4.1
-	redox_users@0.4.4
-	regex@1.10.3
-	regex-automata@0.4.6
-	regex-syntax@0.8.2
-	rustversion@1.0.14
-	ryu@1.0.17
+	parking_lot@0.12.3
+	parking_lot_core@0.9.10
+	paste@1.0.15
+	pest@2.7.10
+	pest_derive@2.7.10
+	pest_generator@2.7.10
+	pest_meta@2.7.10
+	proc-macro2@1.0.86
+	quote@1.0.36
+	ratatui@0.26.3
+	redox_syscall@0.5.2
+	redox_users@0.4.5
+	regex@1.10.5
+	regex-automata@0.4.7
+	regex-syntax@0.8.4
+	rustversion@1.0.17
+	ryu@1.0.18
 	scopeguard@1.2.0
-	serde@1.0.197
-	serde_derive@1.0.197
-	serde_json@1.0.114
+	serde@1.0.203
+	serde_derive@1.0.203
+	serde_json@1.0.118
 	sha2@0.10.8
 	shellexpand@3.1.0
 	shlex@1.3.0
 	signal-hook@0.3.17
 	signal-hook-mio@0.2.3
-	signal-hook-registry@1.4.1
-	smallvec@1.13.1
-	stability@0.1.1
+	signal-hook-registry@1.4.2
+	smallvec@1.13.2
+	stability@0.2.0
 	static_assertions@1.1.0
-	strsim@0.11.0
-	strum@0.26.2
-	strum_macros@0.26.2
-	syn@1.0.109
-	syn@2.0.52
-	thiserror@1.0.58
-	thiserror-impl@1.0.58
+	strsim@0.11.1
+	strum@0.26.3
+	strum_macros@0.26.4
+	syn@2.0.68
+	thiserror@1.0.61
+	thiserror-impl@1.0.61
 	thread_local@1.1.8
 	tui-input@0.8.0
 	typenum@1.17.0
 	ucd-trie@0.1.6
 	unicode-ident@1.0.12
 	unicode-segmentation@1.11.0
-	unicode-width@0.1.11
-	utf8parse@0.2.1
+	unicode-truncate@1.0.0
+	unicode-width@0.1.13
+	utf8parse@0.2.2
 	version_check@0.9.4
 	wasi@0.11.0+wasi-snapshot-preview1
 	winapi@0.3.9
@@ -108,23 +107,24 @@ CRATES="
 	windows-sys@0.48.0
 	windows-sys@0.52.0
 	windows-targets@0.48.5
-	windows-targets@0.52.4
+	windows-targets@0.52.5
 	windows_aarch64_gnullvm@0.48.5
-	windows_aarch64_gnullvm@0.52.4
+	windows_aarch64_gnullvm@0.52.5
 	windows_aarch64_msvc@0.48.5
-	windows_aarch64_msvc@0.52.4
+	windows_aarch64_msvc@0.52.5
 	windows_i686_gnu@0.48.5
-	windows_i686_gnu@0.52.4
+	windows_i686_gnu@0.52.5
+	windows_i686_gnullvm@0.52.5
 	windows_i686_msvc@0.48.5
-	windows_i686_msvc@0.52.4
+	windows_i686_msvc@0.52.5
 	windows_x86_64_gnu@0.48.5
-	windows_x86_64_gnu@0.52.4
+	windows_x86_64_gnu@0.52.5
 	windows_x86_64_gnullvm@0.48.5
-	windows_x86_64_gnullvm@0.52.4
+	windows_x86_64_gnullvm@0.52.5
 	windows_x86_64_msvc@0.48.5
-	windows_x86_64_msvc@0.52.4
-	zerocopy@0.7.32
-	zerocopy-derive@0.7.32
+	windows_x86_64_msvc@0.52.5
+	zerocopy@0.7.34
+	zerocopy-derive@0.7.34
 "
 
 inherit cargo
