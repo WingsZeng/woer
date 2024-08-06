@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="zcfan"
+description="Zero-configuration fan control for ThinkPad"
+command="/usr/bin/zcfan"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_background="yes"
+
+start_pre() {
+    if ! lsmod | grep -q thinkpad_acpi; then
+        if ! modprobe thinkpad_acpi; then
+            eerror "Failed to load thinkpad_acpi module"
+            return 1
+        fi
+    fi
+}
+
+stop_pre() {
+    if ! lsmod | grep -q '^thinkpad_acpi'; then
+        modprobe -r thinkpad_acpi || eerror "Failed to unload thinkpad_acpi module"
+    fi
+}
