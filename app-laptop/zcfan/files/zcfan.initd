@@ -18,7 +18,7 @@ start_pre() {
 }
 
 stop_pre() {
-    if ! lsmod | grep -q '^thinkpad_acpi'; then
+    if lsmod | grep -q '^thinkpad_acpi'; then
         modprobe -r thinkpad_acpi || eerror "Failed to unload thinkpad_acpi module"
     fi
 }
