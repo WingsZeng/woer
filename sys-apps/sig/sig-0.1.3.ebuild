@@ -141,12 +141,16 @@ CRATES="
 inherit cargo
 
 DESCRIPTION="Interactive grep (for streaming)"
+# Double check the homepage as the cargo_metadata crate
+# does not provide this value so instead repository is used
 HOMEPAGE="https://github.com/ynqa/sig"
 SRC_URI="
 	${CARGO_CRATE_URIS}
 	https://github.com/ynqa/sig/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
+# License set may be more restrictive as OR is not respected
+# use cargo-license for a more accurate license picture
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
