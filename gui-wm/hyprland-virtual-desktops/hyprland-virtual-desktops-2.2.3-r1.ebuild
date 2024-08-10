@@ -17,7 +17,7 @@ IUSE="X"
 DEPEND="
 	X? ( gui-wm/hyprland[X] )
 	!X? ( gui-wm/hyprland[-X] )
-	>=gui-wm/hyprland-0.41.1
+	>=gui-wm/hyprland-0.42.0
 	x11-libs/libdrm
 	x11-libs/pixman
 "
@@ -27,7 +27,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES="${FILESDIR}/${PN}-2.2.3-use-hyprutils.patch"
+PATCHES="
+	${FILESDIR}/${PN}-2.2.3-use-hyprutils.patch
+	${FILESDIR}/${PN}-2.2.3-fix-convertion.patch
+"
 
 src_prepare() {
 	# for meson

@@ -1,0 +1,23 @@
+From ab056d34d355fb5a42f23ab355573d5c7d0c9ed6 Mon Sep 17 00:00:00 2001
+From: Wings <wings.xiangyi.zeng@gmail.com>
+Date: Sat, 10 Aug 2024 19:48:23 +0800
+Subject: [PATCH] fix convertion
+
+---
+ src/VirtualDesk.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/VirtualDesk.cpp b/src/VirtualDesk.cpp
+index 80e2f4a..8b27c81 100644
+--- a/src/VirtualDesk.cpp
++++ b/src/VirtualDesk.cpp
+@@ -184,5 +184,5 @@ Layout VirtualDesk::generateCurrentMonitorLayout() {
+ std::string VirtualDesk::monitorDesc(const CMonitor* monitor) {
+     if (!monitor->output)
+         return monitor->szName;
+-    return monitor->output->description ? monitor->output->description : monitor->szName;
++    return monitor->output->description.empty()? monitor->output->description : monitor->szName;
+ }
+-- 
+2.45.2
+
