@@ -27,14 +27,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES="${FILESDIR}/${PN}-2.2.3-use-hyprutils.patch"
+
 src_prepare() {
 	# for meson
 	cp ${FILESDIR}/meson.build ${S}/meson.build || die
 	cp ${FILESDIR}/meson_options.txt ${S}/meson_options.txt || die
-	# fix include for hyprland >=v0.41.1
-	find src -name '*.cpp' -exec sed -i 's|#include <hyprland/src/helpers/memory/SharedPtr.hpp>|#include <hyprland/src/helpers/memory/Memory.hpp>|g' {} + || die
-	find include -name '*.hpp' -exec sed -i 's|#include <hyprland/src/helpers/memory/SharedPtr.hpp>|#include <hyprland/src/helpers/memory/Memory.hpp>|g' {} + || die
-
 	default
 }
 
