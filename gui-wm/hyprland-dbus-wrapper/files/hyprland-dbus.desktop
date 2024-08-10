@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Hyprland (with DBus)
-Comment=A dbus-run-session wrapper for Hyprland
-Exec=dbus-run-session Hyprland
-Type=Application
