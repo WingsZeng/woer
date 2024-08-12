@@ -62,8 +62,10 @@ src_install() {
 	make_desktop_entry ida "IDA Pro ${PV}" "${PN}"
 }
 
-pkg_config() {
-	"/opt/${PN}/idapyswitch" -a
+pkg_postinst() {
+	elog "Run the script 'IDA Pro 9.0 Keygen & Patch.py' in /opt/${PN} to generate"
+	elog "a key and apply the patch to the IDA Pro installation."
+	elog "Run 'idapyswitch' to select the Python version before starting IDA Pro."
 }
 
 pkg_postrm() {
