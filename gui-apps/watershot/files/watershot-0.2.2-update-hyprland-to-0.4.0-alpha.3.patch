@@ -1,0 +1,49 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 9ee3867..2cdb0f4 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -773,9 +773,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "hyprland"
+-version = "0.4.0-alpha.2"
++version = "0.4.0-alpha.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d627cd06fb3389f2554b7a4bb21db8c0bfca8863e6e653702cc4c6dbf20d8276"
++checksum = "2de3f836e02af5a12f374d3a986867c1dc487a63a6d19477d66c7de50f715895"
+ dependencies = [
+  "ahash",
+  "derive_more",
+@@ -1745,9 +1745,21 @@ dependencies = [
+  "mio",
+  "pin-project-lite",
+  "socket2",
++ "tokio-macros",
+  "windows-sys 0.48.0",
+ ]
+ 
++[[package]]
++name = "tokio-macros"
++version = "2.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "630bdcf245f78637c13ec01ffae6187cca34625e8c63150d424b59e55af2675e"
++dependencies = [
++ "proc-macro2",
++ "quote",
++ "syn 2.0.37",
++]
++
+ [[package]]
+ name = "tree_magic_mini"
+ version = "3.1.5"
+diff --git a/Cargo.toml b/Cargo.toml
+index 54d7912..ab39a8d 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -26,5 +26,5 @@ pollster = "0.3.0"
+ bytemuck = { version = "1.13.1", features = ["derive"] }
+ wgpu_text = "0.8.3"
+ regex = "1.9.1"
+-hyprland = "0.4.0-alpha.2"
++hyprland = "0.4.0-alpha.3"
+ strum = { version = "0.25.0", features = ["derive", "strum_macros"] }

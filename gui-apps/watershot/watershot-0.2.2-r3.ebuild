@@ -93,7 +93,7 @@ CRATES="
 	hermit-abi@0.3.3
 	hexf-parse@0.2.1
 	home@0.5.9
-	hyprland@0.4.0-alpha.2
+	hyprland@0.4.0-alpha.3
 	hyprland-macros@0.4.0-alpha.1
 	iana-time-zone@0.1.57
 	iana-time-zone-haiku@0.1.2
@@ -196,6 +196,7 @@ CRATES="
 	thiserror@1.0.48
 	thiserror-impl@1.0.48
 	tokio@1.32.0
+	tokio-macros@2.1.0
 	tree_magic_mini@3.1.5
 	ttf-parser@0.19.2
 	twox-hash@1.6.3
@@ -304,6 +305,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.2.2-update-for-hyprland-0.40.0.patch"
 	"${FILESDIR}/${PN}-0.2.2-update-hyprland-lock.patch"
 	"${FILESDIR}/${PN}-0.2.2-update-wl-clipboard-rs-to-0.9.0.patch"
+	"${FILESDIR}/${PN}-0.2.2-update-hyprland-to-0.4.0-alpha.3.patch"
 )
 
 # rust does not use *FLAGS from make.conf, silence portage warning
