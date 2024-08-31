@@ -91,7 +91,3 @@ src_install() {
 	doins pdf_viewer/keys.config pdf_viewer/prefs.config
 	doman resources/sioyek.1
 }
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
