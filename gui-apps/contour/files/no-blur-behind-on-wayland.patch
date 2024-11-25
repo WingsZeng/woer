@@ -1,0 +1,128 @@
+diff --git a/src/contour/CMakeLists.txt b/src/contour/CMakeLists.txt
+index 86c8e61f..a5fdee54 100644
+--- a/src/contour/CMakeLists.txt
++++ b/src/contour/CMakeLists.txt
+@@ -50,7 +50,6 @@ if(CONTOUR_FRONTEND_GUI)
+     list(APPEND _header_files
+         Actions.h
+         Audio.h
+-        BlurBehind.h
+         Config.h
+         ContourApp.h
+         ContourGuiApp.h
+@@ -61,7 +60,6 @@ if(CONTOUR_FRONTEND_GUI)
+     list(APPEND _source_files
+         Actions.cpp
+         Audio.cpp
+-        BlurBehind.cpp
+         Config.cpp
+         ContourApp.cpp
+         ContourGuiApp.cpp
+diff --git a/src/contour/Config.cpp b/src/contour/Config.cpp
+index 7b3e95df..ac98fb59 100644
+--- a/src/contour/Config.cpp
++++ b/src/contour/Config.cpp
+@@ -464,7 +464,6 @@ void YAMLConfigReader::loadFromEntry(YAML::Node const& node, std::string const&
+         if (child["background"])
+         {
+             loadFromEntry(child["background"], "opacity", where.backgroundOpacity);
+-            loadFromEntry(child["background"], "blur", where.backgroundBlur);
+         }
+         // clang-format on
+
+@@ -2135,7 +2134,6 @@ std::string createString(Config const& c)
+                 {
+                     const auto _ = typename Writer::Offset {};
+                     process(entry.backgroundOpacity);
+-                    process(entry.backgroundBlur);
+                 }
+
+                 process(entry.colors);
+diff --git a/src/contour/Config.h b/src/contour/Config.h
+index b1edf9d3..d7ce9824 100644
+--- a/src/contour/Config.h
++++ b/src/contour/Config.h
+@@ -385,7 +385,6 @@ struct TerminalProfile
+     };
+     ConfigEntry<vtbackend::Opacity, documentation::BackgroundOpacity> backgroundOpacity { vtbackend::Opacity(
+         0xFF) };
+-    ConfigEntry<bool, documentation::BackgroundBlur> backgroundBlur { false };
+     ConfigEntry<vtrasterizer::Decorator, "normal: {}\n"> hyperlinkDecorationNormal {
+         vtrasterizer::Decorator::DottedUnderline
+     };
+diff --git a/src/contour/ConfigDocumentation.h b/src/contour/ConfigDocumentation.h
+index e1eabc01..ce090473 100644
+--- a/src/contour/ConfigDocumentation.h
++++ b/src/contour/ConfigDocumentation.h
+@@ -430,13 +430,6 @@ constexpr StringLiteral BackgroundOpacity {
+     "\n"
+ };
+
+-constexpr StringLiteral BackgroundBlur {
+-    "{comment} Some platforms can blur the transparent background (currently only Windows 10 is "
+-    "supported).\n"
+-    "blur: {}\n"
+-    "\n"
+-};
+-
+ constexpr StringLiteral Bell {
+     "\n"
+     "bell:\n"
+diff --git a/src/contour/TerminalSession.cpp b/src/contour/TerminalSession.cpp
+index 5c7e4e8e..886e2e7c 100644
+--- a/src/contour/TerminalSession.cpp
++++ b/src/contour/TerminalSession.cpp
+@@ -896,9 +896,6 @@ void TerminalSession::sendFocusInEvent()
+
+     terminal().sendFocusInEvent();
+
+-    if (_display)
+-        _display->setBlurBehind(_profile.backgroundBlur.value());
+-
+     scheduleRedraw();
+ }
+
+@@ -1515,7 +1512,6 @@ void TerminalSession::configureDisplay()
+         return;
+
+     sessionLog()("Configuring display.");
+-    _display->setBlurBehind(_profile.backgroundBlur.value());
+
+     {
+         auto const dpr = _display->contentScale();
+diff --git a/src/contour/display/TerminalDisplay.cpp b/src/contour/display/TerminalDisplay.cpp
+index 6b7b3fd1..948e64e5 100644
+--- a/src/contour/display/TerminalDisplay.cpp
++++ b/src/contour/display/TerminalDisplay.cpp
+@@ -1,6 +1,5 @@
+ // SPDX-License-Identifier: Apache-2.0
+ #include <contour/Actions.h>
+-#include <contour/BlurBehind.h>
+ #include <contour/ContourGuiApp.h>
+ #include <contour/display/OpenGLRenderer.h>
+ #include <contour/display/TerminalDisplay.h>
+@@ -1274,11 +1273,6 @@ void TerminalDisplay::setWindowNormal()
+     _maximizedState = false;
+ }
+
+-void TerminalDisplay::setBlurBehind(bool enable)
+-{
+-    BlurBehind::setEnabled(window(), enable);
+-}
+-
+ void TerminalDisplay::toggleFullScreen()
+ {
+     if (!isFullScreen())
+diff --git a/src/contour/display/TerminalDisplay.h b/src/contour/display/TerminalDisplay.h
+index 73efae60..c919fd82 100644
+--- a/src/contour/display/TerminalDisplay.h
++++ b/src/contour/display/TerminalDisplay.h
+@@ -141,7 +141,6 @@ class TerminalDisplay: public QQuickItem
+     void setWindowFullScreen();
+     void setWindowMaximized();
+     void setWindowNormal();
+-    void setBlurBehind(bool enable);
+     void toggleFullScreen();
+     void toggleTitleBar();
+     void setHyperlinkDecoration(vtrasterizer::Decorator normal, vtrasterizer::Decorator hover);
+
