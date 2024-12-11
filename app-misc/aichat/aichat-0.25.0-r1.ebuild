@@ -447,7 +447,7 @@ CRATES="
 	${PN}@${PV}
 "
 
-inherit cargo
+inherit cargo shell-completion
 
 DESCRIPTION="All-in-one LLM CLI Tool"
 HOMEPAGE="https://github.com/sigoden/aichat"
@@ -462,3 +462,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+
+src_install() {
+    cargo_src_install --bin=${PN}
+	newzshcomp ${FILESDIR}/aichat.zsh _${PN}
+}
