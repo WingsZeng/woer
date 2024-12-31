@@ -20,14 +20,14 @@ CRATES="
 	anstyle-query@1.1.2
 	anstyle-wincon@3.0.6
 	anstyle@1.0.10
-	anyhow@1.0.94
+	anyhow@1.0.95
 	arboard@3.4.1
 	async-recursion@1.1.1
 	async-trait@0.1.83
 	atomic-waker@1.1.2
 	autocfg@1.4.0
 	aws-smithy-eventstream@0.60.5
-	aws-smithy-types@1.2.9
+	aws-smithy-types@1.2.11
 	backtrace@0.3.74
 	base64-simd@0.8.0
 	base64@0.22.1
@@ -38,20 +38,20 @@ CRATES="
 	bitflags@2.6.0
 	block-buffer@0.10.4
 	block2@0.5.1
-	bm25@2.1.0
+	bm25@2.2.0
 	bumpalo@3.16.0
-	bytemuck@1.20.0
+	bytemuck@1.21.0
 	byteorder@1.5.0
 	bytes-utils@0.1.4
 	bytes@1.9.0
 	cached@0.54.0
 	cached_proc_macro@0.23.0
 	cached_proc_macro_types@0.1.1
-	cc@1.2.3
+	cc@1.2.6
 	cfg-if@1.0.0
 	cfg_aliases@0.1.1
 	cfg_aliases@0.2.1
-	chrono@0.4.38
+	chrono@0.4.39
 	clap@4.5.23
 	clap_builder@4.5.23
 	clap_derive@4.5.18
@@ -64,9 +64,9 @@ CRATES="
 	cpu-time@1.0.0
 	cpufeatures@0.2.16
 	crc32fast@1.4.2
-	crossbeam-deque@0.8.5
+	crossbeam-deque@0.8.6
 	crossbeam-epoch@0.9.18
-	crossbeam-utils@0.8.20
+	crossbeam-utils@0.8.21
 	crossterm@0.25.0
 	crossterm@0.28.1
 	crossterm_winapi@0.9.1
@@ -90,7 +90,7 @@ CRATES="
 	dtoa-short@0.3.5
 	dtoa@1.0.9
 	dyn-clone@1.0.17
-	ego-tree@0.9.0
+	ego-tree@0.10.0
 	either@1.13.0
 	enum-as-inner@0.6.1
 	env_logger@0.10.2
@@ -99,7 +99,7 @@ CRATES="
 	error-code@3.3.1
 	eventsource-stream@0.2.3
 	fancy-regex@0.14.0
-	fastrand@2.2.0
+	fastrand@2.3.0
 	fd-lock@4.0.2
 	filedescriptor@0.8.2
 	fixedbitset@0.4.2
@@ -129,7 +129,7 @@ CRATES="
 	hermit-abi@0.3.9
 	hermit-abi@0.4.0
 	hmac@0.12.1
-	hnsw_rs@0.3.0
+	hnsw_rs@0.3.1
 	html5ever@0.27.0
 	html5ever@0.29.0
 	html_to_markdown@0.1.0
@@ -139,9 +139,9 @@ CRATES="
 	httparse@1.9.5
 	httpdate@1.0.3
 	humantime@2.1.0
-	hyper-rustls@0.27.3
+	hyper-rustls@0.27.5
 	hyper-util@0.1.10
-	hyper@1.5.1
+	hyper@1.5.2
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.61
 	icu_collections@1.5.0
@@ -168,7 +168,7 @@ CRATES="
 	json-patch@3.0.1
 	jsonptr@0.6.3
 	lazy_static@1.5.0
-	libc@0.2.167
+	libc@0.2.169
 	libloading@0.8.6
 	libredox@0.1.3
 	linux-raw-sys@0.4.14
@@ -187,7 +187,7 @@ CRATES="
 	mime@0.3.17
 	mime_guess@2.0.5
 	minimal-lexical@0.2.1
-	miniz_oxide@0.8.0
+	miniz_oxide@0.8.2
 	mio@0.8.11
 	mio@1.0.3
 	mmap-rs@0.6.1
@@ -212,13 +212,13 @@ CRATES="
 	objc2-metal@0.2.2
 	objc2-quartz-core@0.2.2
 	objc2@0.5.2
-	object@0.36.5
+	object@0.36.7
 	once_cell@1.20.2
 	onig@6.4.0
 	onig_sys@69.8.1
 	openssl-probe@0.1.5
 	option-ext@0.2.0
-	os_info@3.9.0
+	os_info@3.9.1
 	os_pipe@1.2.1
 	outref@0.5.1
 	overload@0.1.1
@@ -247,24 +247,24 @@ CRATES="
 	quick-xml@0.32.0
 	quick-xml@0.36.2
 	quinn-proto@0.11.9
-	quinn-udp@0.5.7
+	quinn-udp@0.5.9
 	quinn@0.11.6
-	quote@1.0.37
+	quote@1.0.38
 	rand@0.8.5
 	rand_chacha@0.3.1
 	rand_core@0.6.4
 	rayon-core@1.12.1
 	rayon@1.10.0
-	redox_syscall@0.5.7
+	redox_syscall@0.5.8
 	redox_users@0.4.6
-	reedline@0.37.0
+	reedline@0.38.0
 	regex-automata@0.1.10
 	regex-automata@0.4.9
 	regex-syntax@0.6.29
 	regex-syntax@0.8.5
 	regex@1.11.1
 	reqwest-eventsource@0.6.0
-	reqwest@0.12.9
+	reqwest@0.12.11
 	rgb@0.8.50
 	ring@0.17.8
 	rust-embed-impl@8.5.0
@@ -273,25 +273,25 @@ CRATES="
 	rust-stemmers@1.2.0
 	rustc-demangle@0.1.24
 	rustc-hash@2.1.0
-	rustix@0.38.41
+	rustix@0.38.42
 	rustls-native-certs@0.8.1
 	rustls-pemfile@2.2.0
-	rustls-pki-types@1.10.0
+	rustls-pki-types@1.10.1
 	rustls-webpki@0.102.8
-	rustls@0.23.19
-	rustversion@1.0.18
+	rustls@0.23.20
+	rustversion@1.0.19
 	ryu@1.0.18
 	same-file@1.0.6
 	schannel@0.1.27
 	scoped-tls@1.0.1
 	scopeguard@1.2.0
-	scraper@0.21.0
-	security-framework-sys@2.12.1
-	security-framework@3.0.1
+	scraper@0.22.0
+	security-framework-sys@2.13.0
+	security-framework@3.1.0
 	selectors@0.26.0
-	serde@1.0.215
-	serde_derive@1.0.215
-	serde_json@1.0.133
+	serde@1.0.217
+	serde_derive@1.0.217
+	serde_json@1.0.134
 	serde_urlencoded@0.7.1
 	serde_yaml@0.9.34+deprecated
 	servo_arc@0.4.0
@@ -318,7 +318,7 @@ CRATES="
 	strum@0.26.3
 	strum_macros@0.26.4
 	subtle@2.6.1
-	syn@2.0.90
+	syn@2.0.92
 	sync_wrapper@1.0.2
 	synstructure@0.13.1
 	syntect@5.2.0
@@ -329,15 +329,15 @@ CRATES="
 	termcolor@1.4.1
 	textwrap@0.16.1
 	thiserror-impl@1.0.69
-	thiserror-impl@2.0.4
+	thiserror-impl@2.0.9
 	thiserror@1.0.69
-	thiserror@2.0.4
+	thiserror@2.0.9
 	thread_local@1.1.8
 	time-core@0.1.2
 	time-macros@0.2.19
 	time@0.3.37
 	tinystr@0.7.6
-	tinyvec@1.8.0
+	tinyvec@1.8.1
 	tinyvec_macros@0.1.1
 	tokio-graceful@0.2.2
 	tokio-macros@2.4.0
@@ -346,7 +346,9 @@ CRATES="
 	tokio-stream@0.1.17
 	tokio-util@0.7.13
 	tokio@1.42.0
+	tower-layer@0.3.3
 	tower-service@0.3.3
+	tower@0.5.2
 	tracing-attributes@0.1.28
 	tracing-core@0.1.33
 	tracing-log@0.2.0
@@ -355,7 +357,7 @@ CRATES="
 	tree_magic_mini@3.1.6
 	try-lock@0.2.5
 	typenum@1.17.0
-	unicase@2.8.0
+	unicase@2.8.1
 	unicode-ident@1.0.14
 	unicode-linebreak@0.1.5
 	unicode-segmentation@1.12.0
@@ -460,8 +462,6 @@ LICENSE="|| ( Apache-2.0 MIT )"
 LICENSE+=" Apache-2.0 BSD Boost-1.0 ISC LGPL-3+ MIT MPL-2.0 Unicode-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
-
-QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 src_install() {
     cargo_src_install --bin=${PN}
