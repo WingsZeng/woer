@@ -289,7 +289,7 @@ CRATES="
 	${PN}-${PV}
 "
 
-inherit cargo
+inherit cargo shell-completion
 
 DESCRIPTION="A tiny unofficial Todoist client"
 HOMEPAGE="https://github.com/alanvardy/tod"
@@ -302,3 +302,21 @@ LICENSE="MIT"
 LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
+
+PATCHES="${FILESDIR}/${PN}-0.6.24-shell-completions.patch"
+
+src_install() {
+	cargo_src_install
+
+	local tod
+	tod="${ED}/usr/bin/tod"
+
+	"$tod" shell completions bash > tod || die
+	dobashcomp tod
+
+	"$tod" shell completions fish > tod.fish || die
+	dofishcomp tod.fish
+
+	"$tod" shell completions zsh > _tod || die
+	dozshcomp _tod
+}
