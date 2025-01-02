@@ -159,7 +159,7 @@ CRATES="
 	regex-automata@0.4.9
 	regex-syntax@0.8.5
 	regex@1.11.1
-	reqwest@0.12.11
+	reqwest@0.12.12
 	ring@0.17.8
 	rustc-demangle@0.1.24
 	rustix@0.38.42
@@ -197,7 +197,7 @@ CRATES="
 	subtle@2.6.1
 	supports-hyperlinks@3.1.0
 	syn@1.0.109
-	syn@2.0.92
+	syn@2.0.93
 	sync_wrapper@1.0.2
 	synstructure@0.13.1
 	system-configuration-sys@0.6.0
@@ -286,7 +286,7 @@ CRATES="
 	zeroize@1.8.1
 	zerovec-derive@0.10.3
 	zerovec@0.10.4
-	${PN}-${PV}
+	${PN}@${PV}
 "
 
 inherit cargo shell-completion
@@ -302,8 +302,6 @@ LICENSE="MIT"
 LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
-
-PATCHES="${FILESDIR}/${PN}-0.6.24-shell-completions.patch"
 
 src_install() {
 	cargo_src_install
