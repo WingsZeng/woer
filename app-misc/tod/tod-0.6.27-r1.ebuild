@@ -303,6 +303,8 @@ LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
+PATCHES="${FILESDIR}/0.6.27-move-default-config-to-XDG_CONFIG_HOME-tod.patch"
+
 src_install() {
 	cargo_src_install
 

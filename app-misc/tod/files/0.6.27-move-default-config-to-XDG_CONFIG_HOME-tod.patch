@@ -1,0 +1,12 @@
+diff --git a/src/config.rs b/src/config.rs
+index 432e8e2..4a5e801 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -384,6 +384,7 @@ pub async fn get_or_create(
+ pub async fn generate_path() -> Result<String, Error> {
+     let config_directory = dirs::config_dir()
+         .ok_or_else(|| error::new("dirs", "Could not find config directory"))?
++        .join("tod")
+         .to_str()
+         .ok_or_else(|| error::new("dirs", "Could not convert config directory to string"))?
+         .to_owned();
