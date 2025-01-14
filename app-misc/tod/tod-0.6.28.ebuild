@@ -22,20 +22,20 @@ CRATES="
 	backtrace@0.3.74
 	base64@0.22.1
 	bitflags@1.3.2
-	bitflags@2.6.0
+	bitflags@2.7.0
 	bumpalo@3.16.0
 	byteorder@1.5.0
 	bytes@1.9.0
-	cc@1.2.7
+	cc@1.2.9
 	cfg-if@1.0.0
 	cfg_aliases@0.2.1
 	chrono-tz-build@0.4.0
 	chrono-tz@0.10.0
 	chrono@0.4.39
-	clap@4.5.23
-	clap_builder@4.5.23
-	clap_complete@4.5.40
-	clap_derive@4.5.18
+	clap@4.5.26
+	clap_builder@4.5.26
+	clap_complete@4.5.42
+	clap_derive@4.5.24
 	clap_lex@0.7.4
 	colorchoice@1.0.3
 	colored@2.2.0
@@ -110,7 +110,7 @@ CRATES="
 	lazy_static@1.5.0
 	libc@0.2.169
 	libredox@0.1.3
-	linux-raw-sys@0.4.14
+	linux-raw-sys@0.4.15
 	litemap@0.7.4
 	lock_api@0.4.12
 	log@0.4.22
@@ -138,16 +138,16 @@ CRATES="
 	parking_lot_core@0.9.10
 	parse-zoneinfo@0.3.1
 	percent-encoding@2.3.1
-	phf@0.11.2
-	phf_codegen@0.11.2
-	phf_generator@0.11.2
-	phf_shared@0.11.2
-	pin-project-lite@0.2.15
+	phf@0.11.3
+	phf_codegen@0.11.3
+	phf_generator@0.11.3
+	phf_shared@0.11.3
+	pin-project-lite@0.2.16
 	pin-utils@0.1.0
 	pkg-config@0.3.31
 	ppv-lite86@0.2.20
 	pretty_assertions@1.4.1
-	proc-macro2@1.0.92
+	proc-macro2@1.0.93
 	quote@1.0.38
 	rand@0.8.5
 	rand_chacha@0.3.1
@@ -162,21 +162,21 @@ CRATES="
 	reqwest@0.12.12
 	ring@0.17.8
 	rustc-demangle@0.1.24
-	rustix@0.38.42
+	rustix@0.38.43
 	rustls-pemfile@2.2.0
 	rustls-pki-types@1.10.1
 	rustls-webpki@0.102.8
-	rustls@0.23.20
+	rustls@0.23.21
 	rustversion@1.0.19
 	ryu@1.0.18
 	same-file@1.0.6
 	schannel@0.1.27
 	scopeguard@1.2.0
-	security-framework-sys@2.13.0
+	security-framework-sys@2.14.0
 	security-framework@2.11.1
 	serde@1.0.217
 	serde_derive@1.0.217
-	serde_json@1.0.134
+	serde_json@1.0.135
 	serde_repr@0.1.19
 	serde_urlencoded@0.7.1
 	shlex@1.3.0
@@ -184,7 +184,7 @@ CRATES="
 	signal-hook-registry@1.4.2
 	signal-hook@0.3.17
 	similar@2.6.0
-	siphasher@0.3.11
+	siphasher@1.0.1
 	slab@0.4.9
 	smallvec@1.13.2
 	socket2@0.5.8
@@ -197,7 +197,7 @@ CRATES="
 	subtle@2.6.1
 	supports-hyperlinks@3.1.0
 	syn@1.0.109
-	syn@2.0.94
+	syn@2.0.96
 	sync_wrapper@1.0.2
 	synstructure@0.13.1
 	system-configuration-sys@0.6.0
@@ -208,11 +208,11 @@ CRATES="
 	thiserror@1.0.69
 	thread_local@1.1.8
 	tinystr@0.7.6
-	tokio-macros@2.4.0
+	tokio-macros@2.5.0
 	tokio-native-tls@0.3.1
 	tokio-rustls@0.26.1
 	tokio-util@0.7.13
-	tokio@1.42.0
+	tokio@1.43.0
 	tower-layer@0.3.3
 	tower-service@0.3.3
 	tower@0.5.2
@@ -228,7 +228,7 @@ CRATES="
 	utf16_iter@1.0.5
 	utf8_iter@1.0.4
 	utf8parse@0.2.2
-	uuid@1.11.0
+	uuid@1.11.1
 	vcpkg@0.2.15
 	walkdir@2.5.0
 	want@0.3.1
