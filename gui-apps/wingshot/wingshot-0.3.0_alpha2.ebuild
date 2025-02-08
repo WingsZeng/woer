@@ -19,6 +19,7 @@ CRATES="
 	anstyle-query@1.1.2
 	anstyle-wincon@3.0.7
 	anstyle@1.0.10
+	anyhow@1.0.95
 	approx@0.5.1
 	arrayvec@0.7.6
 	ash@0.38.0+1.3.281
