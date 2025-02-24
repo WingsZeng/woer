@@ -14,13 +14,10 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"
 SLOT="0"
-# TODO: wait for go 1.24.0 to be released and update to it
-# KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 RESTRICT="mirror"
 
 DEPEND="dev-vcs/git"
-BDEPEND="
-	>=dev-lang/go-1.24.0"
 RDEPEND="${DEPEND}"
 
 src_compile() {
