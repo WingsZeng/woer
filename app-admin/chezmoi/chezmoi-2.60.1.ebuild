@@ -18,6 +18,8 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 RESTRICT="mirror"
 
 DEPEND="dev-vcs/git"
+BDEPEND="
+	>=dev-lang/go-1.24.0"
 RDEPEND="${DEPEND}"
 
 src_compile() {
