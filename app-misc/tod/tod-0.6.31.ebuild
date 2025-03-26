@@ -22,23 +22,22 @@ CRATES="
 	backtrace@0.3.74
 	base64@0.22.1
 	bitflags@1.3.2
-	bitflags@2.8.0
+	bitflags@2.9.0
 	bumpalo@3.17.0
 	byteorder@1.5.0
-	bytes@1.10.0
-	cc@1.2.14
+	bytes@1.10.1
+	cc@1.2.17
 	cfg-if@1.0.0
 	cfg_aliases@0.2.1
-	chrono-tz-build@0.4.0
-	chrono-tz@0.10.1
-	chrono@0.4.39
-	clap@4.5.29
-	clap_builder@4.5.29
-	clap_complete@4.5.44
-	clap_derive@4.5.28
+	chrono-tz-build@0.4.1
+	chrono-tz@0.10.3
+	chrono@0.4.40
+	clap@4.5.32
+	clap_builder@4.5.32
+	clap_complete@4.5.47
+	clap_derive@4.5.32
 	clap_lex@0.7.4
 	colorchoice@1.0.3
-	colored@2.2.0
 	colored@3.0.0
 	core-foundation-sys@0.8.7
 	core-foundation@0.9.4
@@ -51,8 +50,8 @@ CRATES="
 	dirs-sys@0.5.0
 	dirs@6.0.0
 	displaydoc@0.2.5
-	dyn-clone@1.0.18
-	either@1.13.0
+	dyn-clone@1.0.19
+	either@1.15.0
 	encoding_rs@0.8.35
 	equivalent@1.0.2
 	errno@0.3.10
@@ -73,24 +72,24 @@ CRATES="
 	fuzzy-matcher@0.3.7
 	fxhash@0.2.1
 	getrandom@0.2.15
-	getrandom@0.3.1
+	getrandom@0.3.2
 	gimli@0.31.1
-	h2@0.4.7
+	h2@0.4.8
 	hashbrown@0.15.2
 	heck@0.4.1
 	heck@0.5.0
 	homedir@0.3.4
-	http-body-util@0.1.2
+	http-body-util@0.1.3
 	http-body@1.0.1
-	http@1.2.0
-	httparse@1.10.0
+	http@1.3.1
+	httparse@1.10.1
 	httpdate@1.0.3
 	hyper-rustls@0.27.5
 	hyper-tls@0.6.0
 	hyper-util@0.1.10
 	hyper@1.6.0
 	iana-time-zone-haiku@0.1.2
-	iana-time-zone@0.1.61
+	iana-time-zone@0.1.62
 	icu_collections@1.5.0
 	icu_locid@1.5.0
 	icu_locid_transform@1.5.0
@@ -103,33 +102,33 @@ CRATES="
 	icu_provider_macros@1.5.0
 	idna@1.0.3
 	idna_adapter@1.2.0
-	indexmap@2.7.1
+	indexmap@2.8.0
 	inquire@0.7.5
 	ipnet@2.11.0
 	is_terminal_polyfill@1.70.1
-	itoa@1.0.14
+	itoa@1.0.15
 	js-sys@0.3.77
 	lazy_static@1.5.0
-	libc@0.2.169
+	libc@0.2.171
 	libredox@0.1.3
-	linux-raw-sys@0.4.15
-	litemap@0.7.4
+	linux-raw-sys@0.9.3
+	litemap@0.7.5
 	lock_api@0.4.12
-	log@0.4.25
+	log@0.4.27
 	maplit@1.0.2
 	matches@0.1.10
 	memchr@2.7.4
 	mime@0.3.17
-	miniz_oxide@0.8.4
+	miniz_oxide@0.8.5
 	mio@0.8.11
 	mio@1.0.3
-	mockito@1.6.1
-	native-tls@0.2.13
+	mockito@1.7.0
+	native-tls@0.2.14
 	newline-converter@0.3.0
 	nix@0.29.0
 	num-traits@0.2.19
 	object@0.36.7
-	once_cell@1.20.3
+	once_cell@1.21.1
 	openssl-macros@0.1.1
 	openssl-probe@0.1.6
 	openssl-sys@0.9.106
@@ -146,43 +145,43 @@ CRATES="
 	phf_shared@0.11.3
 	pin-project-lite@0.2.16
 	pin-utils@0.1.0
-	pkg-config@0.3.31
-	ppv-lite86@0.2.20
+	pkg-config@0.3.32
+	ppv-lite86@0.2.21
 	pretty_assertions@1.4.1
-	proc-macro2@1.0.93
-	quote@1.0.38
+	proc-macro2@1.0.94
+	quote@1.0.40
+	r-efi@5.2.0
 	rand@0.8.5
 	rand@0.9.0
-	rand_chacha@0.3.1
 	rand_chacha@0.9.0
 	rand_core@0.6.4
-	rand_core@0.9.0
+	rand_core@0.9.3
 	rayon-core@1.12.1
 	rayon@1.10.0
-	redox_syscall@0.5.8
+	redox_syscall@0.5.10
 	redox_users@0.5.0
 	regex-automata@0.4.9
 	regex-syntax@0.8.5
 	regex@1.11.1
-	reqwest@0.12.12
-	ring@0.17.9
+	reqwest@0.12.15
+	ring@0.17.14
 	rustc-demangle@0.1.24
-	rustix@0.38.44
+	rustix@1.0.3
 	rustls-pemfile@2.2.0
 	rustls-pki-types@1.11.0
-	rustls-webpki@0.102.8
-	rustls@0.23.23
-	rustversion@1.0.19
-	ryu@1.0.19
+	rustls-webpki@0.103.1
+	rustls@0.23.25
+	rustversion@1.0.20
+	ryu@1.0.20
 	same-file@1.0.6
 	schannel@0.1.27
 	scopeguard@1.2.0
 	security-framework-sys@2.14.0
 	security-framework@2.11.1
-	serde@1.0.217
-	serde_derive@1.0.217
-	serde_json@1.0.138
-	serde_repr@0.1.19
+	serde@1.0.219
+	serde_derive@1.0.219
+	serde_json@1.0.140
+	serde_repr@0.1.20
 	serde_urlencoded@0.7.1
 	shlex@1.3.0
 	signal-hook-mio@0.2.4
@@ -201,29 +200,29 @@ CRATES="
 	subtle@2.6.1
 	supports-hyperlinks@3.1.0
 	syn@1.0.109
-	syn@2.0.98
+	syn@2.0.100
 	sync_wrapper@1.0.2
 	synstructure@0.13.1
 	system-configuration-sys@0.6.0
 	system-configuration@0.6.1
-	tempfile@3.16.0
-	terminal_size@0.4.1
-	thiserror-impl@2.0.11
-	thiserror@2.0.11
+	tempfile@3.19.1
+	terminal_size@0.4.2
+	thiserror-impl@2.0.12
+	thiserror@2.0.12
 	thread_local@1.1.8
 	tinystr@0.7.6
 	tokio-macros@2.5.0
 	tokio-native-tls@0.3.1
-	tokio-rustls@0.26.1
-	tokio-util@0.7.13
-	tokio@1.43.0
+	tokio-rustls@0.26.2
+	tokio-util@0.7.14
+	tokio@1.44.1
 	tower-layer@0.3.3
 	tower-service@0.3.3
 	tower@0.5.2
 	tracing-core@0.1.33
 	tracing@0.1.41
 	try-lock@0.2.5
-	unicode-ident@1.0.16
+	unicode-ident@1.0.18
 	unicode-segmentation@1.12.0
 	unicode-width@0.1.14
 	untrusted@0.9.0
@@ -232,12 +231,12 @@ CRATES="
 	utf16_iter@1.0.5
 	utf8_iter@1.0.4
 	utf8parse@0.2.2
-	uuid@1.13.1
+	uuid@1.16.0
 	vcpkg@0.2.15
 	walkdir@2.5.0
 	want@0.3.1
 	wasi@0.11.0+wasi-snapshot-preview1
-	wasi@0.13.3+wasi-0.2.2
+	wasi@0.14.2+wasi-0.2.4
 	wasm-bindgen-backend@0.2.100
 	wasm-bindgen-futures@0.4.50
 	wasm-bindgen-macro-support@0.2.100
@@ -245,7 +244,7 @@ CRATES="
 	wasm-bindgen-shared@0.2.100
 	wasm-bindgen@0.2.100
 	web-sys@0.3.77
-	widestring@1.1.0
+	widestring@1.2.0
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.9
 	winapi-x86_64-pc-windows-gnu@0.4.0
@@ -254,43 +253,51 @@ CRATES="
 	windows-core@0.57.0
 	windows-implement@0.57.0
 	windows-interface@0.57.0
-	windows-registry@0.2.0
+	windows-link@0.1.1
+	windows-registry@0.4.0
 	windows-result@0.1.2
-	windows-result@0.2.0
-	windows-strings@0.1.0
+	windows-result@0.3.2
+	windows-strings@0.3.1
 	windows-sys@0.48.0
 	windows-sys@0.52.0
 	windows-sys@0.59.0
 	windows-targets@0.48.5
 	windows-targets@0.52.6
+	windows-targets@0.53.0
 	windows@0.57.0
 	windows_aarch64_gnullvm@0.48.5
 	windows_aarch64_gnullvm@0.52.6
+	windows_aarch64_gnullvm@0.53.0
 	windows_aarch64_msvc@0.48.5
 	windows_aarch64_msvc@0.52.6
+	windows_aarch64_msvc@0.53.0
 	windows_i686_gnu@0.48.5
 	windows_i686_gnu@0.52.6
+	windows_i686_gnu@0.53.0
 	windows_i686_gnullvm@0.52.6
+	windows_i686_gnullvm@0.53.0
 	windows_i686_msvc@0.48.5
 	windows_i686_msvc@0.52.6
+	windows_i686_msvc@0.53.0
 	windows_x86_64_gnu@0.48.5
 	windows_x86_64_gnu@0.52.6
+	windows_x86_64_gnu@0.53.0
 	windows_x86_64_gnullvm@0.48.5
 	windows_x86_64_gnullvm@0.52.6
+	windows_x86_64_gnullvm@0.53.0
 	windows_x86_64_msvc@0.48.5
 	windows_x86_64_msvc@0.52.6
-	wit-bindgen-rt@0.33.0
+	windows_x86_64_msvc@0.53.0
+	wit-bindgen-rt@0.39.0
 	write16@1.0.0
 	writeable@0.5.5
 	yansi@1.0.1
 	yoke-derive@0.7.5
 	yoke@0.7.5
-	zerocopy-derive@0.7.35
-	zerocopy-derive@0.8.18
-	zerocopy@0.7.35
-	zerocopy@0.8.18
-	zerofrom-derive@0.1.5
-	zerofrom@0.1.5
+	zerocopy-derive@0.8.24
+	zerocopy@0.8.24
+	zerofrom-derive@0.1.6
+	zerofrom@0.1.6
 	zeroize@1.8.1
 	zerovec-derive@0.10.3
 	zerovec@0.10.4
