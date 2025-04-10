@@ -19,7 +19,7 @@ RESTRICT="mirror"
 
 DEPEND="dev-vcs/git"
 BDEPEND="
-	>=dev-lang/go-1.24.0"
+	>=dev-lang/go-1.24.2"
 RDEPEND="${DEPEND}"
 
 src_compile() {
