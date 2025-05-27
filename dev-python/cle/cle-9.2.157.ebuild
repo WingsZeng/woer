@@ -17,6 +17,12 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	>=dev-python/pytoolconfig-1.2.2[${PYTHON_USEDEP}]
+	=dev-python/archinfo-${PV}[${PYTHON_USEDEP}]
+	dev-python/cart[${PYTHON_USEDEP}]
+	dev-python/pefile[${PYTHON_USEDEP}]
+	>=dev-python/pyelftools-0.27[${PYTHON_USEDEP}]
+	=dev-python/pyvex-${PV}[${PYTHON_USEDEP}]
+	>=dev-python/sortedcontainers-2.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
