@@ -7,47 +7,43 @@ EAPI=8
 
 CRATES="
 	adler2@2.0.0
-	ahash@0.8.11
+	ahash@0.8.12
 	aho-corasick@1.1.3
 	allocator-api2@0.2.21
 	arbitrary@1.4.1
-	arrayvec@0.4.12
 	arrayvec@0.7.6
+	atoi_simd@0.16.1
 	autocfg@1.4.0
 	base64@0.22.1
+	bgzip@0.3.1
 	binary-layout@2.1.0
 	bincode@1.3.3
-	bitflags@1.3.2
 	bitflags@2.9.0
 	block-buffer@0.10.4
-	bstr@1.11.3
+	bstr@1.12.0
 	btoi@0.4.3
 	bumpalo@3.17.0
 	byteorder@1.5.0
 	bytesize@2.0.1
-	calamine@0.26.1
+	calamine@0.28.0
+	caseless@0.2.2
 	cassowary@0.3.0
 	castaway@0.2.3
-	cc@1.2.17
-	cfg-if@0.1.10
+	cc@1.2.19
 	cfg-if@1.0.0
 	cfg_aliases@0.2.1
-	cloudabi@0.0.3
 	codepage@0.1.2
 	colored@2.2.0
-	colorgrad@0.7.0
+	colorgrad@0.7.1
 	compact_str@0.8.1
+	comrak@0.39.0
 	console@0.15.11
 	cpufeatures@0.2.17
 	crc32fast@1.4.2
-	crossbeam-channel@0.2.6
-	crossbeam-channel@0.5.14
+	crossbeam-channel@0.5.15
 	crossbeam-deque@0.8.6
-	crossbeam-epoch@0.6.1
 	crossbeam-epoch@0.9.18
 	crossbeam-queue@0.3.12
-	crossbeam-utils@0.5.0
-	crossbeam-utils@0.6.6
 	crossbeam-utils@0.8.21
 	crossbeam@0.8.4
 	crypto-common@0.1.6
@@ -55,17 +51,18 @@ CRATES="
 	cssparser-macros@0.6.1
 	cssparser@0.34.0
 	csv-core@0.1.12
-	csv-index@0.1.6
 	csv@1.3.1
-	ctrlc@3.4.5
-	darling@0.20.10
-	darling_core@0.20.10
-	darling_macro@0.20.10
+	ctrlc@3.4.6
+	darling@0.20.11
+	darling_core@0.20.11
+	darling_macro@0.20.11
 	dbus@0.9.7
+	debug_unsafe@0.1.3
 	deepsize@0.2.0
 	deepsize_derive@0.1.2
 	derive_arbitrary@1.4.1
 	derive_more@0.99.19
+	deunicode@1.6.2
 	digest@0.10.7
 	displaydoc@0.2.5
 	dlv-list@0.6.0
@@ -85,26 +82,26 @@ CRATES="
 	encoding@0.2.33
 	encoding_index_tests@0.1.4
 	encoding_rs@0.8.35
+	entities@1.0.1
 	enumset@1.1.5
 	enumset_derive@0.10.0
 	equivalent@1.0.2
 	errno-dragonfly@0.1.2
 	errno@0.2.8
-	errno@0.3.10
-	ext-sort@0.1.4
+	errno@0.3.11
+	ext-sort@0.1.5
+	fast-float2@0.2.3
 	fast-float@0.2.0
 	fastrand@2.3.0
 	filetime@0.2.25
-	flate2@1.1.0
+	flate2@1.1.1
 	fnv@1.0.7
 	foldhash@0.1.5
 	form_urlencoded@1.2.1
-	fuchsia-cprng@0.1.1
 	futf@0.1.5
 	fxhash@0.2.1
 	generic-array@0.14.7
 	getopts@0.2.21
-	getrandom@0.2.15
 	getrandom@0.3.2
 	glob@0.3.2
 	hashbrown@0.12.3
@@ -117,54 +114,51 @@ CRATES="
 	icu_collections@1.5.0
 	icu_locid@1.5.0
 	icu_locid_transform@1.5.0
-	icu_locid_transform_data@1.5.0
+	icu_locid_transform_data@1.5.1
 	icu_normalizer@1.5.0
-	icu_normalizer_data@1.5.0
+	icu_normalizer_data@1.5.1
 	icu_properties@1.5.1
-	icu_properties_data@1.5.0
+	icu_properties_data@1.5.1
 	icu_provider@1.5.0
 	icu_provider_macros@1.5.0
 	ident_case@1.0.1
 	idna@1.0.3
 	idna_adapter@1.2.0
 	indexmap@1.9.3
-	indexmap@2.8.0
+	indexmap@2.9.0
 	indicatif@0.17.11
 	indoc@2.0.6
 	instability@0.3.7
 	itertools@0.13.0
 	itoa@1.0.15
-	jiff-static@0.2.4
-	jiff-tzdb-platform@0.1.2
-	jiff-tzdb@0.1.3
-	jiff@0.2.4
+	jiff-static@0.2.14
+	jiff-tzdb-platform@0.1.3
+	jiff-tzdb@0.1.4
+	jiff@0.2.14
 	js-sys@0.3.77
 	lazy_static@1.5.0
-	libc@0.2.171
+	libc@0.2.172
 	libdbus-sys@0.2.5
 	libredox@0.1.3
+	libz-rs-sys@0.5.1
 	linked-hash-map@0.5.6
-	linux-raw-sys@0.9.3
+	linux-raw-sys@0.9.4
 	litemap@0.7.5
-	lock_api@0.1.5
 	lock_api@0.4.12
 	lockfree-object-pool@0.1.6
-	log@0.4.26
+	log@0.4.27
 	lru@0.12.5
 	mac@0.1.1
 	markup5ever@0.14.1
 	match_token@0.1.0
-	maybe-uninit@2.0.0
 	md5@0.7.0
 	memchr@2.7.4
 	memmap2@0.5.10
-	memoffset@0.2.1
 	mime2ext@0.1.54
-	miniz_oxide@0.8.5
+	miniz_oxide@0.8.8
 	namedlock@0.7.0
 	new_debug_unreachable@1.0.6
 	nix@0.29.0
-	nodrop@0.1.14
 	normpath@1.3.0
 	npyz@0.8.3
 	num-bigint@0.4.6
@@ -174,24 +168,22 @@ CRATES="
 	num_cpus@1.16.0
 	number_prefix@0.4.0
 	numfmt@1.1.1
-	once_cell@1.21.1
+	once_cell@1.21.3
 	opener@0.7.2
 	ordered-float@2.10.1
 	ordered-float@5.0.0
-	owning_ref@0.4.1
+	pad@0.1.6
 	pager@0.16.1
 	paltoquet@0.11.0
 	pariter@0.5.1
 	parking_lot@0.12.3
-	parking_lot@0.6.4
-	parking_lot_core@0.3.1
 	parking_lot_core@0.9.10
 	paste@1.0.15
 	percent-encoding@2.3.1
-	pest@2.7.15
-	pest_derive@2.7.15
-	pest_generator@2.7.15
-	pest_meta@2.7.15
+	pest@2.8.0
+	pest_derive@2.8.0
+	pest_generator@2.8.0
+	pest_meta@2.8.0
 	phf@0.11.3
 	phf_codegen@0.11.3
 	phf_generator@0.11.3
@@ -205,39 +197,31 @@ CRATES="
 	priority-queue@1.4.0
 	proc-macro2@1.0.94
 	py_literal@0.4.0
-	quick-xml@0.31.0
-	quick-xml@0.37.2
+	quick-xml@0.37.4
 	quote@1.0.40
 	r-efi@5.2.0
-	rand@0.5.6
 	rand@0.8.5
 	rand@0.9.0
 	rand_chacha@0.9.0
-	rand_core@0.3.1
-	rand_core@0.4.2
 	rand_core@0.6.4
 	rand_core@0.9.3
 	rand_seeder@0.4.0
 	ratatui@0.29.0
 	rayon-core@1.12.1
 	rayon@1.10.0
-	redox_syscall@0.5.10
+	redox_syscall@0.5.11
 	regex-automata@0.4.9
 	regex-syntax@0.8.5
 	regex@1.11.1
 	rmp-serde@1.3.0
 	rmp@0.8.14
-	rust_xlsxwriter@0.84.1
-	rustc_version@0.2.3
-	rustix@1.0.3
+	rust_xlsxwriter@0.88.0
+	rustix@1.0.5
 	rustversion@1.0.20
 	ryu@1.0.20
-	scopeguard@0.3.3
 	scopeguard@1.2.0
 	scraper@0.23.1
 	selectors@0.26.0
-	semver-parser@0.7.0
-	semver@0.9.0
 	serde@1.0.219
 	serde_derive@1.0.219
 	serde_json@1.0.140
@@ -246,12 +230,13 @@ CRATES="
 	shlex@1.3.0
 	simd-adler32@0.3.7
 	siphasher@1.0.1
-	smallvec@0.6.14
-	smallvec@1.14.0
+	slug@0.1.6
+	smallvec@1.15.0
 	smawk@0.3.2
+	sprintf@0.4.1
 	stable_deref_trait@1.2.0
 	static_assertions@1.1.0
-	string_cache@0.8.8
+	string_cache@0.8.9
 	string_cache_codegen@0.5.4
 	strsim@0.10.0
 	strsim@0.11.1
@@ -270,19 +255,22 @@ CRATES="
 	thiserror-impl@2.0.12
 	thiserror@1.0.69
 	thiserror@2.0.12
-	thread_local@1.1.8
-	threadpool@1.8.1
 	tinystr@0.7.6
+	tinyvec@1.9.0
+	tinyvec_macros@0.1.1
 	topk@0.5.0
 	transient-btree-index@0.5.1
+	typed-arena@2.0.2
 	typenum@1.18.0
 	ucd-trie@0.1.7
 	unicode-ident@1.0.18
 	unicode-linebreak@0.1.5
+	unicode-normalization@0.1.24
 	unicode-segmentation@1.12.0
 	unicode-truncate@1.1.0
 	unicode-width@0.1.14
 	unicode-width@0.2.0
+	unicode_categories@0.1.1
 	unidecode@0.3.0
 	url@2.5.4
 	utf-8@0.7.6
@@ -291,7 +279,6 @@ CRATES="
 	utf8_iter@1.0.4
 	uuid@1.16.0
 	version_check@0.9.5
-	wasi@0.11.0+wasi-snapshot-preview1
 	wasi@0.14.2+wasi-0.2.4
 	wasm-bindgen-backend@0.2.100
 	wasm-bindgen-macro-support@0.2.100
@@ -317,15 +304,14 @@ CRATES="
 	writeable@0.5.5
 	yoke-derive@0.7.5
 	yoke@0.7.5
-	zerocopy-derive@0.7.35
-	zerocopy-derive@0.8.23
-	zerocopy@0.7.35
-	zerocopy@0.8.23
+	zerocopy-derive@0.8.24
+	zerocopy@0.8.24
 	zerofrom-derive@0.1.6
 	zerofrom@0.1.6
 	zerovec-derive@0.10.3
 	zerovec@0.10.4
-	zip@2.4.2
+	zip@4.2.0
+	zlib-rs@0.5.1
 	zopfli@0.8.1
 	${PN}@${PV}
 "
@@ -346,9 +332,3 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
-
-src_compile() {
-	# export CARGO_PROFILE_RELEASE_LTO=true
-	ewarn flag: "$CARGO_PROFILE_RELEASE_LTO"
-	cargo_src_compile
-}
