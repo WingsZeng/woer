@@ -27,7 +27,7 @@ CRATES="
 	backtrace@0.3.74
 	base16ct@0.2.0
 	base62@2.2.1
-	base64ct@1.7.3
+	base64ct@1.6.0
 	bcrypt-pbkdf@0.10.0
 	bitflags@1.3.2
 	bitflags@2.9.1
@@ -148,7 +148,8 @@ CRATES="
 	indoc@2.0.6
 	inout@0.1.4
 	instability@0.3.7
-	internal-russh-forked-ssh-key@0.6.10+upstream-0.6.7
+	internal-russh-forked-ssh-key@0.6.11+upstream-0.6.7
+	io-uring@0.7.8
 	is_terminal_polyfill@1.70.1
 	itertools@0.11.0
 	itertools@0.13.0
@@ -189,7 +190,7 @@ CRATES="
 	num_cpus@1.16.0
 	num_threads@0.1.7
 	object@0.36.7
-	object@0.37.0
+	object@0.37.1
 	once_cell@1.21.1
 	opaque-debug@0.3.1
 	option-ext@0.2.0
@@ -231,11 +232,12 @@ CRATES="
 	regex-syntax@0.8.5
 	regex@1.11.1
 	rfc6979@0.4.0
+	ring@0.17.14
 	rsa@0.9.8
 	russh-cryptovec@0.52.0
 	russh-sftp@2.1.1
 	russh-util@0.52.0
-	russh@0.52.1
+	russh@0.53.0
 	rust-i18n-macro@3.1.5
 	rust-i18n-support@3.1.5
 	rust-i18n@3.1.5
@@ -301,7 +303,7 @@ CRATES="
 	tiny-keccak@2.0.2
 	tokio-macros@2.5.0
 	tokio-util@0.7.14
-	tokio@1.45.1
+	tokio@1.46.0
 	toml@0.5.11
 	toml@0.8.22
 	toml_datetime@0.6.9
@@ -318,6 +320,7 @@ CRATES="
 	unicode-width@0.2.0
 	universal-hash@0.5.1
 	unsafe-libyaml@0.2.11
+	untrusted@0.9.0
 	utf8parse@0.2.2
 	uuid@1.16.0
 	version_check@0.9.5
