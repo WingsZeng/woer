@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,8 +8,8 @@ inherit desktop xdg-utils python-single-r1
 
 DESCRIPTION="IDA Interactive Disasssembler"
 HOMEPAGE="https://hex-rays.com/ida-pro/"
-MAJOR_MINOR_PATCH="$(ver_cut 1)$(ver_cut 2)sp1"
-SRC_URI="https://gentoo.wingszeng.top/${PN}_${MAJOR_MINOR_PATCH}_x64linux.run -> ${P}.run"
+MAJOR_MINOR="$(ver_cut 1)$(ver_cut 2)"
+SRC_URI="https://gentoo.wingszeng.top/${PN}_${MAJOR_MINOR}_x64linux.run -> ${P}.run"
 
 LICENSE="EULA"
 SLOT="0"
@@ -71,12 +71,6 @@ src_install() {
         dosym "/opt/${PN}/idat" "/usr/bin/idat"
         dosym "/opt/${PN}/idapyswitch" "/usr/bin/idapyswitch"
         make_desktop_entry ida "IDA Pro ${PV}" "${PN}"
-}
-
-pkg_postinst() {
-        elog "Run the script 'IDA Pro 9.0 Keygen & Patch.py' in /opt/${PN} to generate"
-        elog "a key and apply the patch to the IDA Pro installation."
-        elog "Run 'idapyswitch' to select the Python version before starting IDA Pro."
 }
 
 pkg_postrm() {
