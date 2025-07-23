@@ -3,13 +3,16 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=(python3_{11..13})
 inherit desktop xdg-utils python-single-r1
 
 DESCRIPTION="IDA Interactive Disasssembler"
 HOMEPAGE="https://hex-rays.com/ida-pro/"
 MAJOR_MINOR="$(ver_cut 1)$(ver_cut 2)"
-SRC_URI="https://gentoo.wingszeng.top/${PN}_${MAJOR_MINOR}_x64linux.run -> ${P}.run"
+SRC_URI="
+        https://gentoo.wingszeng.top/${PN}_${MAJOR_MINOR}_x64linux.run -> ${P}.run
+        https://gentoo.wingszeng.top/ida-signatures-bundles-${PV}.zip
+"
 
 LICENSE="EULA"
 SLOT="0"
@@ -42,9 +45,10 @@ BDEPEND="app-arch/bitrock-unpacker"
 S="${WORKDIR}/ida"
 
 src_unpack() {
-        cp "${DISTDIR}/${A}" . || die
-        bitrock-unpacker "${A}" "${WORKDIR}" || die
-        rm "${A}" || die
+        cp "${DISTDIR}/${P}.run" . || die
+        bitrock-unpacker "${P}.run" "${WORKDIR}" || die
+        rm "${P}.run" || die
+        unpack "${DISTDIR}/ida-signatures-bundles-${PV}.zip" || die
 }
 
 src_install() {
@@ -63,7 +67,13 @@ src_install() {
         doins -r ./programfiles/*
         doins -r ./programfiles_custom/*
         doins -r ./noarchfiles/*
-        # doins "${FILESDIR}/patch.py"
+
+        insinto "/opt/${PN}/sig"
+        doins -r "${WORKDIR}"/golang
+        doins -r "${WORKDIR}"/rust
+        doins -r "${WORKDIR}"/linux
+        doins -r "${WORKDIR}"/windows
+
         fperms 755 "/opt/${PN}/ida"
         fperms 755 "/opt/${PN}/idat"
         fperms 755 "/opt/${PN}/idapyswitch"
