@@ -1,0 +1,26 @@
+From c7626ed97263f7179511be5d88a710767a9b9c87 Mon Sep 17 00:00:00 2001
+From: Wings <wings.xiangyi.zeng@gmail.com>
+Date: Tue, 22 Jul 2025 20:27:47 +0800
+Subject: [PATCH] feat(range): add getter for the internal range vector
+
+---
+ include/range.hpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/include/range.hpp b/include/range.hpp
+index ddb5f06..11738f1 100644
+--- a/include/range.hpp
++++ b/include/range.hpp
+@@ -204,6 +204,9 @@ public:
+   /// Get the last range_t in the set
+   const range_t &lastrange(void) const { return bag.back(); }
+ 
++  /// Get the range_t vector
++  const rangevec_t &as_rangevec() const { return bag; }
++
+   /// Get the number of range_t elements in the set
+   size_t nranges(void) const { return bag.size(); }
+ 
+-- 
+2.50.1
+
