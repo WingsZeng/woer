@@ -50,9 +50,9 @@ CRATES="
 	chacha20@0.9.1
 	chrono@0.4.40
 	cipher@0.4.4
-	clap@4.5.40
-	clap_builder@4.5.40
-	clap_derive@4.5.40
+	clap@4.5.41
+	clap_builder@4.5.41
+	clap_derive@4.5.41
 	clap_lex@0.7.4
 	cmake@0.1.54
 	colorchoice@1.0.3
@@ -60,7 +60,7 @@ CRATES="
 	const-oid@0.9.6
 	const-random-macro@0.1.16
 	const-random@0.1.18
-	const-str@0.6.2
+	const-str@0.6.3
 	convert_case@0.7.1
 	core-foundation-sys@0.8.7
 	cpp_demangle@0.4.4
@@ -165,8 +165,8 @@ CRATES="
 	lock_api@0.4.12
 	log@0.4.26
 	lru@0.12.5
-	lua-src@547.0.0
-	luajit-src@210.5.12+a4f56a4
+	lua-src@548.1.1
+	luajit-src@210.6.1+f9140a6
 	macro_rules_attribute-proc_macro@0.2.2
 	macro_rules_attribute@0.2.2
 	md5@0.7.0
@@ -174,8 +174,8 @@ CRATES="
 	memmap2@0.9.5
 	miniz_oxide@0.8.5
 	mio@1.0.3
-	mlua-sys@0.6.8
-	mlua@0.10.5
+	mlua-sys@0.8.2
+	mlua@0.11.1
 	mockall@0.13.1
 	mockall_derive@0.13.1
 	msvc-demangler@0.10.1
@@ -285,8 +285,8 @@ CRATES="
 	strum@0.26.3
 	strum_macros@0.26.4
 	subtle@2.6.1
-	symbolic-common@12.15.5
-	symbolic-demangle@12.15.5
+	symbolic-common@12.16.0
+	symbolic-demangle@12.16.0
 	syn@2.0.100
 	sys-locale@0.3.2
 	tempfile@3.20.0
@@ -303,7 +303,7 @@ CRATES="
 	tiny-keccak@2.0.2
 	tokio-macros@2.5.0
 	tokio-util@0.7.14
-	tokio@1.46.0
+	tokio@1.46.1
 	toml@0.5.11
 	toml@0.8.22
 	toml_datetime@0.6.9
