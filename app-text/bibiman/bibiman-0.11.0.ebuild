@@ -290,8 +290,3 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
-
-src_compile() {
-	export CARGO_PROFILE_RELEASE_LTO=true
-	cargo_src_compile
-}
