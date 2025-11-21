@@ -100,7 +100,6 @@ src_compile() {
 	# portage complains: QA Notice: Pre-stripped files found
 	# let portage do the strip
 	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=true
 	cargo_src_compile
 }
 
