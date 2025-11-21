@@ -30,7 +30,7 @@ CRATES="
 	base64ct@1.6.0
 	bcrypt-pbkdf@0.10.0
 	bitflags@1.3.2
-	bitflags@2.9.1
+	bitflags@2.9.4
 	blake2@0.10.6
 	block-buffer@0.10.4
 	block-padding@0.3.3
@@ -50,9 +50,9 @@ CRATES="
 	chacha20@0.9.1
 	chrono@0.4.40
 	cipher@0.4.4
-	clap@4.5.41
-	clap_builder@4.5.41
-	clap_derive@4.5.41
+	clap@4.5.48
+	clap_builder@4.5.48
+	clap_derive@4.5.47
 	clap_lex@0.7.4
 	cmake@0.1.54
 	colorchoice@1.0.3
@@ -60,7 +60,7 @@ CRATES="
 	const-oid@0.9.6
 	const-random-macro@0.1.16
 	const-random@0.1.18
-	const-str@0.6.3
+	const-str@0.7.0
 	convert_case@0.7.1
 	core-foundation-sys@0.8.7
 	cpp_demangle@0.4.4
@@ -156,7 +156,7 @@ CRATES="
 	itoa@1.0.15
 	js-sys@0.3.77
 	lazy_static@1.5.0
-	libc@0.2.171
+	libc@0.2.175
 	libm@0.2.11
 	libredox@0.1.3
 	linux-raw-sys@0.4.15
@@ -174,8 +174,8 @@ CRATES="
 	memmap2@0.9.5
 	miniz_oxide@0.8.5
 	mio@1.0.3
-	mlua-sys@0.8.2
-	mlua@0.11.1
+	mlua-sys@0.8.3
+	mlua@0.11.3
 	mockall@0.13.1
 	mockall_derive@0.13.1
 	msvc-demangler@0.10.1
@@ -190,7 +190,7 @@ CRATES="
 	num_cpus@1.16.0
 	num_threads@0.1.7
 	object@0.36.7
-	object@0.37.1
+	object@0.37.3
 	once_cell@1.21.1
 	opaque-debug@0.3.1
 	option-ext@0.2.0
@@ -198,7 +198,7 @@ CRATES="
 	p256@0.13.2
 	p384@0.13.1
 	p521@0.13.3
-	pageant@0.0.3
+	pageant@0.1.0
 	parking_lot@0.12.3
 	parking_lot_core@0.9.10
 	password-hash@0.5.0
@@ -228,16 +228,16 @@ CRATES="
 	ratatui@0.29.0
 	redox_syscall@0.5.10
 	redox_users@0.5.0
-	regex-automata@0.4.9
+	regex-automata@0.4.11
 	regex-syntax@0.8.5
-	regex@1.11.1
+	regex@1.11.3
 	rfc6979@0.4.0
 	ring@0.17.14
 	rsa@0.9.8
 	russh-cryptovec@0.52.0
 	russh-sftp@2.1.1
 	russh-util@0.52.0
-	russh@0.53.0
+	russh@0.54.4
 	rust-i18n-macro@3.1.5
 	rust-i18n-support@3.1.5
 	rust-i18n@3.1.5
@@ -258,9 +258,10 @@ CRATES="
 	seize@0.3.3
 	semver@1.0.26
 	serde-value@0.7.0
-	serde@1.0.219
-	serde_derive@1.0.219
-	serde_json@1.0.140
+	serde@1.0.226
+	serde_core@1.0.226
+	serde_derive@1.0.226
+	serde_json@1.0.145
 	serde_spanned@0.6.8
 	serde_yaml@0.9.34+deprecated
 	sha1@0.10.6
@@ -274,7 +275,7 @@ CRATES="
 	siphasher@1.0.1
 	slab@0.4.9
 	smallvec@1.14.0
-	socket2@0.5.8
+	socket2@0.6.0
 	spin@0.9.8
 	spki@0.7.3
 	ssh-cipher@0.2.0
@@ -285,11 +286,11 @@ CRATES="
 	strum@0.26.3
 	strum_macros@0.26.4
 	subtle@2.6.1
-	symbolic-common@12.16.0
-	symbolic-demangle@12.16.0
+	symbolic-common@12.16.3
+	symbolic-demangle@12.16.3
 	syn@2.0.100
 	sys-locale@0.3.2
-	tempfile@3.20.0
+	tempfile@3.23.0
 	termbg@0.6.2
 	termcolor@1.4.1
 	termtree@0.5.1
@@ -303,7 +304,7 @@ CRATES="
 	tiny-keccak@2.0.2
 	tokio-macros@2.5.0
 	tokio-util@0.7.14
-	tokio@1.46.1
+	tokio@1.47.1
 	toml@0.5.11
 	toml@0.8.22
 	toml_datetime@0.6.9
@@ -340,24 +341,33 @@ CRATES="
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
 	windows-core@0.52.0
-	windows-core@0.58.0
-	windows-implement@0.58.0
-	windows-interface@0.58.0
-	windows-link@0.1.0
-	windows-result@0.2.0
-	windows-strings@0.1.0
+	windows-core@0.59.0
+	windows-implement@0.59.0
+	windows-interface@0.59.1
+	windows-link@0.1.3
+	windows-result@0.3.4
+	windows-strings@0.3.1
 	windows-sys@0.52.0
 	windows-sys@0.59.0
 	windows-targets@0.52.6
-	windows@0.58.0
+	windows-targets@0.53.3
+	windows@0.59.0
 	windows_aarch64_gnullvm@0.52.6
+	windows_aarch64_gnullvm@0.53.0
 	windows_aarch64_msvc@0.52.6
+	windows_aarch64_msvc@0.53.0
 	windows_i686_gnu@0.52.6
+	windows_i686_gnu@0.53.0
 	windows_i686_gnullvm@0.52.6
+	windows_i686_gnullvm@0.53.0
 	windows_i686_msvc@0.52.6
+	windows_i686_msvc@0.53.0
 	windows_x86_64_gnu@0.52.6
+	windows_x86_64_gnu@0.53.0
 	windows_x86_64_gnullvm@0.52.6
+	windows_x86_64_gnullvm@0.53.0
 	windows_x86_64_msvc@0.52.6
+	windows_x86_64_msvc@0.53.0
 	winnow@0.7.10
 	winres@0.1.12
 	winsafe@0.0.19
@@ -380,6 +390,8 @@ SRC_URI="
 
 LICENSE="MIT"
 # Dependent crate licenses
-LICENSE+=" Apache-2.0 BSD CC0-1.0 GPL-2 MIT MPL-2.0 Unicode-3.0 ZLIB"
+LICENSE+="
+	Apache-2.0 BSD CC0-1.0 GPL-2 ISC MIT MPL-2.0 Unicode-3.0 ZLIB
+"
 SLOT="0"
 KEYWORDS="~amd64"
