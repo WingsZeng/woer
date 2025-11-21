@@ -300,8 +300,3 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
-
-src_compile() {
-	export CARGO_PROFILE_RELEASE_LTO=true
-	cargo_src_compile
-}
