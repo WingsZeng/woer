@@ -70,10 +70,10 @@ pkg_setup() {
 
 src_prepare() {
 	local golibsass_path
-	local gowebp_path
+	# local gowebp_path
 
 	golibsass_path=$(_find_package "github.com/bep" "golibsass")
-	gowebp_path=$(_find_package "github.com/bep" "gowebp")
+	# gowebp_path=$(_find_package "github.com/bep" "gowebp")
 
 	# Apply sed patches
 	sed -i 's|// #cgo CFLAGS: -O2 -fPIC|// #cgo CFLAGS: -fPIC|' "${WORKDIR}/${golibsass_path}/internal/libsass/a__cgo.go"
@@ -81,7 +81,7 @@ src_prepare() {
 	sed -i 's|// #cgo CXXFLAGS: -g -std=c++0x -O2 -fPIC|// #cgo CXXFLAGS: -std=c++0x -fPIC|' "${WORKDIR}/${golibsass_path}/internal/libsass/a__cgo.go"
 	sed -i 's|// #cgo LDFLAGS: -lstdc++ -lm|// #cgo LDFLAGS: -lstdc++ -lm -lsass|' "${WORKDIR}/${golibsass_path}/internal/libsass/a__cgo.go"
 
-	sed -i 's|// #cgo unix LDFLAGS: -lm|// #cgo unix LDFLAGS: -lm -lwebp\n// #cgo CFLAGS: -DLIBWEBP_NO_SRC|' "${WORKDIR}/${gowebp_path}/internal/libwebp/a__cgo.go"
+	# sed -i 's|// #cgo unix LDFLAGS: -lm|// #cgo unix LDFLAGS: -lm -lwebp\n// #cgo CFLAGS: -DLIBWEBP_NO_SRC|' "${WORKDIR}/${gowebp_path}/internal/libwebp/a__cgo.go"
 
 	default
 }
