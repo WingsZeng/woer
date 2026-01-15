@@ -904,7 +904,7 @@ declare -A GIT_CRATES=(
         [crunchy]='https://github.com/nmathewson/crunchy;260ec5f08969480c342bb3fe47f88870ed5c6cce;crunchy-%commit%'
 )
 
-inherit cargo
+inherit cargo shell-completion
 
 DESCRIPTION="An AI agent"
 HOMEPAGE=""
@@ -939,4 +939,10 @@ src_compile() {
 
 src_install() {
         cargo_src_install --path crates/goose-cli
+
+        local goose
+        goose="${ED}/usr/bin/goose"
+
+        "$goose" completion zsh | sed 's/#compdef goose-cli/#compdef goose/' >_tod || die
+        dozshcomp _tod
 }
