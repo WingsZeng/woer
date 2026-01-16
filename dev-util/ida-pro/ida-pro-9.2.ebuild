@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=(python3_{11..13})
+PYTHON_COMPAT=(python3_{12..14})
 inherit desktop xdg-utils python-single-r1
 
 DESCRIPTION="IDA Interactive Disasssembler"
