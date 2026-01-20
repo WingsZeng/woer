@@ -1,0 +1,60 @@
+From 860058962662b86210695fc5823fb04c7ea77c17 Mon Sep 17 00:00:00 2001
+From: Wings <wings.xiangyi.zeng@gmail.com>
+Date: Tue, 20 Jan 2026 00:09:59 +0800
+Subject: [PATCH 2/2] feat(session): add global recipes to common sessions
+
+---
+ crates/goose-cli/src/session/builder.rs | 29 ++++++++++++++++++++-----
+ 1 file changed, 24 insertions(+), 5 deletions(-)
+
+diff --git a/crates/goose-cli/src/session/builder.rs b/crates/goose-cli/src/session/builder.rs
+index 4ecc96ea3..ed2bfbb31 100644
+--- a/crates/goose-cli/src/session/builder.rs
++++ b/crates/goose-cli/src/session/builder.rs
+@@ -8,6 +8,7 @@ use goose::config::{
+     extensions::get_extension_by_name, get_all_extensions, Config, ExtensionConfig,
+ };
+ use goose::providers::create;
++use goose::recipe::local_recipes::list_local_recipes;
+ use goose::recipe::Recipe;
+ use goose::session::session_manager::SessionType;
+ use goose::session::{EnabledExtensionsState, ExtensionState};
+@@ -420,12 +421,30 @@ pub async fn build_session(session_config: SessionBuilderConfig) -> CliSession {
+             .with_temperature(temperature)
+     };
+ 
++    // Load global recipes as sub-recipes only for non-recipe sessions
++    let sub_recipes = if session_config.recipe.is_none() {
++        list_local_recipes().ok().map(|recipes| {
++            recipes
++                .into_iter()
++                .map(|(path, recipe)| goose::recipe::SubRecipe {
++                    name: path
++                        .file_stem()
++                        .and_then(|s| s.to_str())
++                        .unwrap_or("unknown")
++                        .to_string(),
++                    path: path.to_string_lossy().to_string(),
++                    values: None,
++                    sequential_when_repeated: false,
++                    description: Some(recipe.description),
++                })
++                .collect()
++        })
++    } else {
++        recipe.and_then(|r| r.sub_recipes.clone())
++    };
++
+     agent
+-        .apply_recipe_components(
+-            recipe.and_then(|r| r.sub_recipes.clone()),
+-            recipe.and_then(|r| r.response.clone()),
+-            true,
+-        )
++        .apply_recipe_components(sub_recipes, recipe.and_then(|r| r.response.clone()), true)
+         .await;
+ 
+     let new_provider = match create(&provider_name, model_config).await {
+-- 
+2.52.0
+

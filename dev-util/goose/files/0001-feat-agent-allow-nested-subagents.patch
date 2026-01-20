@@ -1,0 +1,45 @@
+From 988c8cd9599a00bc8d3175915c53ae3f412b85e1 Mon Sep 17 00:00:00 2001
+From: Wings <wings.xiangyi.zeng@gmail.com>
+Date: Tue, 20 Jan 2026 00:00:37 +0800
+Subject: [PATCH 1/2] feat(agent): allow nested subagents
+
+---
+ crates/goose/src/agents/agent.rs | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/crates/goose/src/agents/agent.rs b/crates/goose/src/agents/agent.rs
+index 42291dfd5..b9289dc40 100644
+--- a/crates/goose/src/agents/agent.rs
++++ b/crates/goose/src/agents/agent.rs
+@@ -461,17 +461,17 @@ impl Agent {
+         cancellation_token: Option<CancellationToken>,
+         session: &Session,
+     ) -> (String, Result<ToolCallResult, ErrorData>) {
+-        // Prevent subagents from creating other subagents
+-        if session.session_type == SessionType::SubAgent && tool_call.name == SUBAGENT_TOOL_NAME {
+-            return (
+-                request_id,
+-                Err(ErrorData::new(
+-                    ErrorCode::INVALID_REQUEST,
+-                    "Subagents cannot create other subagents".to_string(),
+-                    None,
+-                )),
+-            );
+-        }
++        // Nested subagents are now allowed
++        // if session.session_type == SessionType::SubAgent && tool_call.name == SUBAGENT_TOOL_NAME {
++        //     return (
++        //         request_id,
++        //         Err(ErrorData::new(
++        //             ErrorCode::INVALID_REQUEST,
++        //             "Subagents cannot create other subagents".to_string(),
++        //             None,
++        //         )),
++        //     );
++        // }
+ 
+         if tool_call.name == PLATFORM_MANAGE_SCHEDULE_TOOL_NAME {
+             let arguments = tool_call
+-- 
+2.52.0
+
