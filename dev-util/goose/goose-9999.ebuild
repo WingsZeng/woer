@@ -37,6 +37,7 @@ src_prepare() {
 	if use extra; then
 		eapply "${FILESDIR}"/0001-feat-agent-allow-nested-subagents.patch
 		eapply "${FILESDIR}"/0002-feat-session-add-global-recipes-to-common-sessions.patch
+		eapply "${FILESDIR}"/0003-feat-subagent-use-extensions-from-recipe.patch
 	fi
 }
 
