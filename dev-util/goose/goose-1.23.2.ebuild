@@ -893,6 +893,10 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
+PATCHES=(
+	"${FILESDIR}"/goose-1.23.2-feat-subagent-use-extensions-from-recipe.patch
+)
+
 src_compile() {
 	cargo_src_compile -p goose-cli
 }

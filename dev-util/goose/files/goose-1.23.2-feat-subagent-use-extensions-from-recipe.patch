@@ -1,0 +1,53 @@
+From 17bad4ff172eb12556e1dafa3f9081e1fbdad9b8 Mon Sep 17 00:00:00 2001
+From: Wings <wings.xiangyi.zeng@gmail.com>
+Date: Tue, 20 Jan 2026 16:49:43 +0800
+Subject: [PATCH] feat(subagent): use extensions from recipe
+
+---
+ crates/goose/src/agents/subagent_tool.rs | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/crates/goose/src/agents/subagent_tool.rs b/crates/goose/src/agents/subagent_tool.rs
+index 8df8b9a45..88971a42e 100644
+--- a/crates/goose/src/agents/subagent_tool.rs
++++ b/crates/goose/src/agents/subagent_tool.rs
+@@ -221,6 +221,17 @@ pub fn handle_subagent_tool(
+         }
+     };
+ 
++    let task_config = match apply_recipe_extensions(task_config, &recipe, &parsed_params) {
++        Ok(tc) => tc,
++        Err(e) => {
++            return ToolCallResult::from(Err(ErrorData {
++                code: ErrorCode::INVALID_PARAMS,
++                message: Cow::from(e.to_string()),
++                data: None,
++            }));
++        }
++    };
++
+     let config = config.clone();
+     ToolCallResult {
+         notification_stream: None,
+@@ -387,6 +398,19 @@ fn build_adhoc_recipe(params: &SubagentParams) -> Result<Recipe> {
+     Ok(recipe)
+ }
+ 
++fn apply_recipe_extensions(
++    mut task_config: TaskConfig,
++    recipe: &Recipe,
++    params: &SubagentParams,
++) -> Result<TaskConfig> {
++    if params.extensions.is_none() {
++        if let Some(recipe_extensions) = &recipe.extensions {
++            task_config.extensions = recipe_extensions.clone();
++        }
++    }
++    Ok(task_config)
++}
++
+ async fn apply_settings_overrides(
+     mut task_config: TaskConfig,
+     params: &SubagentParams,
+-- 
+2.52.0
