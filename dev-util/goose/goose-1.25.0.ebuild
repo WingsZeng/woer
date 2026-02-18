@@ -50,7 +50,7 @@ CRATES="
 	aws-sdk-ssooidc@1.93.0
 	aws-sdk-sts@1.95.0
 	aws-sigv4@1.3.7
-	aws-smithy-async@1.2.11
+	aws-smithy-async@1.2.12
 	aws-smithy-eventstream@0.60.14
 	aws-smithy-http-client@1.1.5
 	aws-smithy-http@0.62.6
@@ -60,7 +60,7 @@ CRATES="
 	aws-smithy-runtime-api@1.9.3
 	aws-smithy-runtime@1.9.5
 	aws-smithy-types@1.3.5
-	aws-smithy-xml@0.60.13
+	aws-smithy-xml@0.60.14
 	aws-types@1.3.11
 	axum-core@0.4.5
 	axum-core@0.5.6
@@ -159,6 +159,7 @@ CRATES="
 	clap_complete@4.5.65
 	clap_derive@4.5.55
 	clap_lex@0.7.7
+	clap_mangen@0.2.31
 	cliclack@0.3.8
 	clipboard-win@5.4.1
 	clircle@0.6.1
@@ -167,6 +168,7 @@ CRATES="
 	colorchoice@1.0.4
 	colored@2.2.0
 	combine@4.6.7
+	comfy-table@7.2.2
 	compact_str@0.7.1
 	compact_str@0.9.0
 	compression-codecs@0.4.36
@@ -202,11 +204,13 @@ CRATES="
 	crossbeam-epoch@0.9.18
 	crossbeam-queue@0.3.12
 	crossbeam-utils@0.8.21
+	crossterm@0.29.0
+	crossterm_winapi@0.9.1
 	crunchy@0.2.4
 	crypto-common@0.1.7
 	ctor@0.2.9
 	cudarc@0.17.8
-	cudarc@0.19.1
+	cudarc@0.19.2
 	darling@0.20.11
 	darling@0.21.3
 	darling@0.23.0
@@ -245,7 +249,7 @@ CRATES="
 	deno_terminal@0.2.3
 	deno_unsync@0.4.4
 	der@0.7.10
-	deranged@0.5.5
+	deranged@0.5.6
 	derive_arbitrary@1.4.2
 	derive_builder@0.20.2
 	derive_builder_core@0.20.2
@@ -362,6 +366,7 @@ CRATES="
 	generic-array@0.14.7
 	getrandom@0.2.17
 	getrandom@0.3.4
+	getrandom@0.4.1
 	gif@0.13.3
 	gif@0.14.1
 	gimli@0.32.3
@@ -414,6 +419,7 @@ CRATES="
 	icu_properties@2.1.2
 	icu_properties_data@2.1.2
 	icu_provider@2.1.1
+	id-arena@2.3.0
 	ident_case@1.0.1
 	idna@1.1.0
 	idna_adapter@1.2.1
@@ -455,11 +461,12 @@ CRATES="
 	jsonc-parser@0.27.1
 	jsonrpcmsg@0.1.2
 	jsonschema@0.30.0
-	jsonwebtoken@9.3.1
+	jsonwebtoken@10.3.0
 	keyring@3.6.3
-	lazy-regex-proc_macros@3.5.1
-	lazy-regex@3.5.1
+	lazy-regex-proc_macros@3.6.0
+	lazy-regex@3.6.0
 	lazy_static@1.5.0
+	leb128fmt@0.1.0
 	lebe@0.5.3
 	libc@0.2.180
 	libdbus-sys@0.2.7
@@ -508,7 +515,7 @@ CRATES="
 	new_debug_unreachable@1.0.6
 	nibble_vec@0.1.0
 	nix@0.29.0
-	nix@0.30.1
+	nix@0.31.1
 	node_resolver@0.65.0
 	nom@7.1.3
 	nom@8.0.0
@@ -563,16 +570,12 @@ CRATES="
 	openssl-src@300.5.5+3.5.5
 	openssl-sys@0.9.111
 	openssl@0.10.75
-	opentelemetry-appender-tracing@0.27.0
-	opentelemetry-http@0.27.0
+	opentelemetry-appender-tracing@0.31.1
 	opentelemetry-http@0.31.0
-	opentelemetry-otlp@0.27.0
 	opentelemetry-otlp@0.31.0
-	opentelemetry-proto@0.27.0
 	opentelemetry-proto@0.31.0
-	opentelemetry@0.27.1
+	opentelemetry-stdout@0.31.0
 	opentelemetry@0.31.0
-	opentelemetry_sdk@0.27.1
 	opentelemetry_sdk@0.31.0
 	option-ext@0.2.0
 	ordered-multimap@0.7.3
@@ -631,10 +634,8 @@ CRATES="
 	proc-macro-error-attr@1.0.4
 	proc-macro-error@1.0.4
 	proc-macro2@1.0.106
-	process-wrap@9.0.1
-	prost-derive@0.13.5
+	process-wrap@9.0.3
 	prost-derive@0.14.3
-	prost@0.13.5
 	prost@0.14.3
 	psl-types@2.0.11
 	psm@0.1.30
@@ -687,8 +688,11 @@ CRATES="
 	ring@0.17.14
 	rmcp-macros@0.12.0
 	rmcp-macros@0.14.0
+	rmcp-macros@0.15.0
 	rmcp@0.12.0
 	rmcp@0.14.0
+	rmcp@0.15.0
+	roff@0.2.2
 	ron@0.12.0
 	rsa@0.9.10
 	rubato@0.16.2
@@ -850,7 +854,7 @@ CRATES="
 	system-configuration@0.7.0
 	tap@1.0.1
 	tar@0.4.44
-	tempfile@3.24.0
+	tempfile@3.25.0
 	temporal_capi@0.1.2
 	temporal_rs@0.1.2
 	termcolor@1.4.1
@@ -889,23 +893,21 @@ CRATES="
 	tokio-tungstenite@0.28.0
 	tokio-util@0.7.18
 	tokio@1.49.0
-	toml@0.9.11+spec-1.1.0
+	toml@0.9.12+spec-1.1.0
 	toml_datetime@0.7.5+spec-1.1.0
-	toml_parser@1.0.6+spec-1.1.0
+	toml_parser@1.0.7+spec-1.1.0
 	toml_writer@1.0.6+spec-1.1.0
 	tonic-prost@0.14.3
-	tonic@0.12.3
 	tonic@0.14.3
 	tower-http@0.6.8
 	tower-layer@0.3.3
 	tower-service@0.3.3
-	tower@0.4.13
 	tower@0.5.3
 	tracing-appender@0.2.4
 	tracing-attributes@0.1.31
 	tracing-core@0.1.36
 	tracing-log@0.2.0
-	tracing-opentelemetry@0.28.0
+	tracing-opentelemetry@0.32.1
 	tracing-serde@0.2.0
 	tracing-subscriber@0.3.22
 	tracing@0.1.44
@@ -924,7 +926,7 @@ CRATES="
 	try-lock@0.2.5
 	tungstenite@0.28.0
 	twox-hash@2.1.0
-	typed-path@0.12.2
+	typed-path@0.12.3
 	typeid@1.0.3
 	typenum@1.19.0
 	ucd-trie@0.1.7
@@ -949,6 +951,7 @@ CRATES="
 	unicode_categories@0.1.1
 	unit-prefix@0.5.2
 	unsafe-libyaml@0.2.11
+	untrusted@0.7.1
 	untrusted@0.9.0
 	url@2.5.8
 	urlencoding@2.1.3
@@ -971,14 +974,18 @@ CRATES="
 	want@0.3.1
 	wasi@0.11.1+wasi-snapshot-preview1
 	wasip2@1.0.2+wasi-0.2.9
+	wasip3@0.4.0+wasi-0.3.0-rc-2026-01-06
 	wasite@0.1.0
 	wasm-bindgen-futures@0.4.58
 	wasm-bindgen-macro-support@0.2.108
 	wasm-bindgen-macro@0.2.108
 	wasm-bindgen-shared@0.2.108
 	wasm-bindgen@0.2.108
+	wasm-encoder@0.244.0
+	wasm-metadata@0.244.0
 	wasm-streams@0.4.2
 	wasm_dep_analyzer@0.4.0
+	wasmparser@0.244.0
 	web-sys@0.3.85
 	web-time@1.1.0
 	webbrowser@1.1.0
@@ -1062,7 +1069,12 @@ CRATES="
 	winreg@0.55.0
 	winsafe@0.0.19
 	wiremock@0.6.5
+	wit-bindgen-core@0.51.0
+	wit-bindgen-rust-macro@0.51.0
+	wit-bindgen-rust@0.51.0
 	wit-bindgen@0.51.0
+	wit-component@0.244.0
+	wit-parser@0.244.0
 	writeable@0.6.2
 	wyz@0.5.1
 	xattr@1.6.1
@@ -1088,7 +1100,7 @@ CRATES="
 	zerovec@0.11.5
 	zip@0.6.6
 	zip@2.4.2
-	zip@7.4.0
+	zip@7.2.0
 	zmij@1.0.20
 	zoneinfo64@0.2.1
 	zopfli@0.8.3
@@ -1127,10 +1139,6 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
-
-PATCHES=(
-	"${FILESDIR}"/goose-1.23.2-feat-subagent-use-extensions-from-recipe.patch
-)
 
 src_compile() {
 	export RUSTY_V8_ARCHIVE=${WORKDIR}/${V8_P}.a
