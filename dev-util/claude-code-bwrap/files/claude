@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+REAL_SANDBOX="$HOME/.local/share/claude-code-sandbox"
+mkdir -p "$REAL_SANDBOX"
+
+ARGS=(--dev-bind / /)
+ARGS+=(--bind "$REAL_SANDBOX" "$HOME")
+
+BIND_TARGETS=()
+
+add_bind() {
+    local src="$1"
+    local dst="$2"
+    ARGS+=(--bind "$src" "$dst")
+    BIND_TARGETS+=("$REAL_SANDBOX${dst#"$HOME"}")
+}
+
+shopt -s dotglob
+for item in "$HOME"/*; do
+    [[ -e "$item" ]] || continue
+    base=$(basename "$item")
+
+    if [[ "$base" == ".local" ]]; then
+        ARGS+=(--dir "$HOME/.local" --dir "$HOME/.local/share")
+        for sub in "$HOME/.local/share"/*; do
+            [[ "$(realpath "$sub")" == "$(realpath "$REAL_SANDBOX")" ]] && continue
+            add_bind "$sub" "$sub"
+        done
+        for sub in "$HOME/.local"/*; do
+            [[ "$(basename "$sub")" == "share" ]] && continue
+            add_bind "$sub" "$sub"
+        done
+        continue
+    fi
+
+    add_bind "$item" "$item"
+done
+
+cleanup() {
+    rm -rf "${BIND_TARGETS[@]}"
+    rmdir "$REAL_SANDBOX"/.local/share
+    rmdir "$REAL_SANDBOX"/.local
+}
+trap cleanup EXIT
+
+bwrap "${ARGS[@]}" --setenv HOME "$HOME" /opt/bin/claude "$@"
