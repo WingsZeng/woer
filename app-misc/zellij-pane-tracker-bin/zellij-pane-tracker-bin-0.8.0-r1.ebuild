@@ -3,7 +3,7 @@
 
 EAPI=8
 
-COMMIT="2533fe8574379bfb6f9a983da535fba24f33b67c"
+COMMIT="7d246862359b2b28166a4ac44bf5bd8e2b38cdf5"
 
 DESCRIPTION="Zellij plugin that exports pane names to JSON for shell integration"
 HOMEPAGE="https://github.com/theslyprofessor/zellij-pane-tracker"
