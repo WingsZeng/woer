@@ -3,6 +3,31 @@
 REAL_SANDBOX="$HOME/.local/share/claude-code-sandbox"
 mkdir -p "$REAL_SANDBOX"
 
+LOCK_FILE="$REAL_SANDBOX/.refcount.lock"
+REFCOUNT_FILE="$REAL_SANDBOX/.refcount"
+exec {LOCK_FD}>"$LOCK_FILE"
+
+with_lock() {
+    flock "$LOCK_FD"
+    "$@"
+    flock -u "$LOCK_FD"
+}
+
+increment_refcount() {
+    local count
+    count=$(cat "$REFCOUNT_FILE" 2>/dev/null || echo 0)
+    echo $((count + 1)) >"$REFCOUNT_FILE"
+}
+
+decrement_refcount() {
+    local count
+    count=$(cat "$REFCOUNT_FILE" 2>/dev/null || echo 1)
+    echo $((count - 1)) >"$REFCOUNT_FILE"
+    echo $((count - 1))
+}
+
+with_lock increment_refcount
+
 ARGS=(--dev-bind / /)
 ARGS+=(--bind "$REAL_SANDBOX" "$HOME")
 
@@ -37,10 +62,15 @@ for item in "$HOME"/*; do
 done
 
 cleanup() {
-    rm -rf "${BIND_TARGETS[@]}"
-    rmdir "$REAL_SANDBOX"/.local/share
-    rmdir "$REAL_SANDBOX"/.local
+    local remaining
+    remaining=$(with_lock decrement_refcount)
+    if [[ "$remaining" -le 0 ]]; then
+        rm -rf "${BIND_TARGETS[@]}"
+        rmdir "$REAL_SANDBOX"/.local/share 2>/dev/null
+        rmdir "$REAL_SANDBOX"/.local 2>/dev/null
+        rm -f "$LOCK_FILE" "$REFCOUNT_FILE"
+    fi
 }
 trap cleanup EXIT
 
-bwrap "${ARGS[@]}" --setenv HOME "$HOME" /opt/bin/claude "$@"
+bwrap "${ARGS[@]}" --die-with-parent --setenv HOME "$HOME" /opt/bin/claude "$@"
