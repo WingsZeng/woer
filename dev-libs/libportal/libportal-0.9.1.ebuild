@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit flag-o-matic meson python-any-r1 vala virtualx
 
 DESCRIPTION="Flatpak portal library"
