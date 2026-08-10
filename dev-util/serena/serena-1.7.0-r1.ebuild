@@ -21,7 +21,6 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gui"
 
 RDEPEND="
 	>=dev-python/anthropic-0.117.0[${PYTHON_USEDEP}]
@@ -53,12 +52,11 @@ RDEPEND="
 	>=dev-python/types-pyyaml-6.0.12[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-2.7[${PYTHON_USEDEP}]
 	>=dev-python/werkzeug-3.1[${PYTHON_USEDEP}]
-	gui? (
-		>=dev-python/pillow-10.0[${PYTHON_USEDEP}]
-		>=dev-python/pystray-0.19.5[${PYTHON_USEDEP}]
-		>=dev-python/pywebview-6.2[${PYTHON_USEDEP}]
-	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-no-gui-deps.patch"
+)
 
 src_prepare() {
 	distutils-r1_src_prepare
@@ -76,4 +74,6 @@ src_prepare() {
 pkg_postinst() {
 	optfeature "Agno agent framework integration" "dev-python/agno dev-python/sqlalchemy"
 	optfeature "Google Gemini model support" dev-python/google-genai
+	optfeature "Native GUI dashboard (pywebview + system tray)" \
+		"dev-python/pywebview dev-python/pystray dev-python/pillow"
 }
