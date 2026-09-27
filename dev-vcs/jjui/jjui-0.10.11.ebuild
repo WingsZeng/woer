@@ -21,10 +21,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 BDEPEND="
-	>=dev-lang/go-1.25.0
+	>=dev-lang/go-1.27.0
 "
-RDEPEND=""
-DEPEND="${RDEPEND}"
+
+RDEPEND="
+	>=dev-vcs/jj-0.37
+"
 
 src_compile() {
 	ego build -ldflags "-X 'main.Version=${PV}'" -o ${PN} cmd/jjui/main.go
