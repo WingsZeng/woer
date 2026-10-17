@@ -287,7 +287,7 @@ SRC_URI="
 
 LICENSE="GPL-3+"
 # Dependent crate licenses
-LICENSE+=" Apache-2.0 CC0-1.0 GPL-3+ ISC MIT Unicode-DFS-2016 ZLIB"
+LICENSE+=" Apache-2.0 CC0-1.0 GPL-3+ ISC MIT Unicode-3.0 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
 
