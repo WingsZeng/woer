@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_BINWRAP="one_gadget"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -20,13 +20,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-ruby_add_bdepend "
-    >=dev-ruby/rake-13.0
-    >=dev-ruby/rspec-3.7
-    >=dev-ruby/rubocop-1
-	>=dev-ruby/simplecov-0.21
-	>=dev-ruby/yard-0.9
-"
 
 # fix: elftools >= 1.0.2 < 1.2.0
 # don't know how to do

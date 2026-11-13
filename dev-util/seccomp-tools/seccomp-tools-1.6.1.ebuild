@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_BINWRAP="seccomp-tools"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -20,12 +20,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "
+    dev-ruby/bundler
     >=dev-ruby/rake-13.0
     >=dev-ruby/rake-compiler-1.0
-    >=dev-ruby/rspec-3.9
-    >=dev-ruby/rubocop-1
-    >=dev-ruby/simplecov-0.21
-    >=dev-ruby/yard-0.9
 "
 
 ruby_add_rdepend "
@@ -37,6 +34,14 @@ all_ruby_prepare() {
         -e 's/__FILE__/"'${RUBY_FAKEGEM_GEMSPEC}'"/' \
         -e 's/git ls-files -z/find * -print0/' \
         -i ${RUBY_FAKEGEM_GEMSPEC} || die
+
+    sed -e "/require 'rspec\/core\/rake_task'/d" \
+        -e "/require 'rubocop\/rake_task'/d" \
+        -e "/require 'yard'/d" \
+        -e '/^RuboCop::RakeTask/d' \
+        -e '/^RSpec::Core::RakeTask/d' \
+        -e '/^YARD::Rake::YardocTask/,/^end$/d' \
+        -i Rakefile || die
 }
 each_ruby_compile() {
 	${RUBY} -S rake compile || die "rake compile failed"
