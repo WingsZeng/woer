@@ -1,20 +1,16 @@
-# Copyright 2018-2025 Gentoo Authors
+# Copyright 2018-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit go-module
 
-DESCRIPTION="jjui is a TUI designed for interacting with the Jujutsu version control system
-"
+DESCRIPTION="A TUI for interacting with the Jujutsu version control system"
 HOMEPAGE="https://github.com/idursun/jjui"
 SRC_URI="
 	https://github.com/idursun/jjui/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/WingsZeng/jjui-go-deps/releases/download/v${PV}/${P}-deps.tar.xz
 "
-
-# NOTE: To create the vendor tarball, run:
-# `go mod vendor && cd .. && tar -caf ${P}-vendor.tar.xz ${P}/vendor`
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,11 +21,11 @@ BDEPEND="
 "
 
 RDEPEND="
-	>=dev-vcs/jj-0.37
+	>=dev-vcs/jj-0.39
 "
 
 src_compile() {
-	ego build -ldflags "-X 'main.Version=${PV}'" -o ${PN} cmd/jjui/main.go
+	ego build -ldflags "-X 'main.Version=${PV}'" -o ${PN} ./cmd/jjui
 }
 
 src_install() {
