@@ -18,7 +18,7 @@ if [[ ${PV} == "99999999" ]]; then
 else
 	MY_PV="${PV:0:4}.${PV:4:2}.${PV:6:2}"
 	SRC_URI="https://github.com/pwndbg/pwndbg/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -29,19 +29,19 @@ RDEPEND="
 	dev-debug/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	~dev-python/gdb-pt-dump-0.0.0_p20240401[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-libs/capstone6pwndbg-6.0.0_alpha6[python,${PYTHON_USEDEP}]
-		>=dev-python/niche-elf-0.3.6[${PYTHON_USEDEP}]
+		~dev-libs/capstone6pwndbg-8.0.0[${PYTHON_USEDEP}]
+		~dev-python/niche-elf-0.3.7[${PYTHON_USEDEP}]
 		>=dev-python/psutil-7.0.0[${PYTHON_USEDEP}]
-		>=dev-python/pycparser-2.23[${PYTHON_USEDEP}]
-		>=dev-python/pyelftools-0.32[${PYTHON_USEDEP}]
+		>=dev-python/pycparser-3.0[${PYTHON_USEDEP}]
+		>=dev-python/pyelftools-0.33[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.19.2[${PYTHON_USEDEP}]
-		>=dev-python/requests-2.32.5[${PYTHON_USEDEP}]
-		>=dev-python/rich-14.1.0[${PYTHON_USEDEP}]
+		>=dev-python/requests-2.34.2[${PYTHON_USEDEP}]
+		>=dev-python/rich-15.0.0[${PYTHON_USEDEP}]
 		>=dev-python/sortedcontainers-2.4.0[${PYTHON_USEDEP}]
-		>=dev-python/tabulate-0.9.0[${PYTHON_USEDEP}]
-		>=dev-python/typing-extensions-4.15.0[${PYTHON_USEDEP}]
+		>=dev-python/tabulate-0.10.0[${PYTHON_USEDEP}]
+		>=dev-python/typing-extensions-4.16.0[${PYTHON_USEDEP}]
 		>=dev-util/pwntools-4.14.1[${PYTHON_USEDEP}]
-		>=dev-util/ROPgadget-7.6[${PYTHON_USEDEP}]
+		~dev-util/ROPgadget-7.6[${PYTHON_USEDEP}]
 		>=dev-util/unicorn-2.1.4[python,${PYTHON_USEDEP}]
 	')
 "
