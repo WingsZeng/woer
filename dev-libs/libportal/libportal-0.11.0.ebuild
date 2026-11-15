@@ -1,19 +1,19 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
-inherit flag-o-matic meson python-any-r1 vala virtualx
+inherit flag-o-matic meson python-any-r1 vala
 
 DESCRIPTION="Flatpak portal library"
 HOMEPAGE="https://github.com/flatpak/libportal"
 SRC_URI="https://github.com/flatpak/libportal/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-3"
-SLOT="0/1-1-1-1-1" # soname of libportal{,-gtk3,-gtk4,-qt5,-qt6}.so
+SLOT="0/1-1-1-1" # soname of libportal{,-gtk3,-gtk4,-qt6}.so
 KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
-IUSE="gtk gtk-doc +introspection qt5 qt6 test +vala wayland X"
+IUSE="gtk gtk-doc +introspection qt6 test +vala wayland X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
@@ -21,34 +21,21 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/glib-2.58:2
+	>=dev-libs/glib-2.80:2
 	introspection? ( dev-libs/gobject-introspection:= )
 	gtk? (
 		>=x11-libs/gtk+-3.24.41-r1:3[X?,wayland?]
 		>=gui-libs/gtk-4.12.5-r2:4[X?,wayland?]
 	)
-	qt5? (
-		dev-qt/qtcore:=
-		dev-qt/qtgui:=
-		dev-qt/qtx11extras:=
-		dev-qt/qtwidgets:=
-	)
 	qt6? (
 		dev-qt/qtbase:=[gui,widgets]
 	)
 "
-DEPEND="${RDEPEND}
-	qt5? (
-		test? ( dev-qt/qttest:= )
-	)
-"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gi-docgen )
-	qt5? (
-		test? ( dev-qt/linguist-tools )
-	)
 	test? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep '
@@ -91,7 +78,6 @@ src_configure() {
 	local emesonargs=(
 		$(meson_feature gtk backend-gtk3)
 		$(meson_feature gtk backend-gtk4)
-		$(meson_feature qt5 backend-qt5)
 		$(meson_feature qt6 backend-qt6)
 		-Dportal-tests=false
 		$(meson_use introspection)
@@ -102,16 +88,6 @@ src_configure() {
 	meson_src_configure
 }
 
-src_test() {
-	# Tests only exist for Qt5
-	if use qt5; then
-		virtx meson_src_test
-	else
-		# run meson_src_test to notice if tests are added
-		meson_src_test
-	fi
-}
-
 src_install() {
 	meson_src_install
 
@@ -120,4 +96,3 @@ src_install() {
 		mv "${ED}"/usr/share/doc/${PN}-1 "${ED}"/usr/share/gtk-doc/html/ || die
 	fi
 }
-
