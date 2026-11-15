@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="Pipe interface for rizin"
@@ -12,23 +13,21 @@ HOMEPAGE="https://rizin.re/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
-
-DOCS="README.md"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="dev-util/rizin"
-BDEPEND="
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-	)
-"
 
-python_test() {
-	py.test -v -v || die
+# Tests are not included in the sdist.
+RESTRICT="test"
+
+DOCS=( README.md )
+
+python_prepare_all() {
+	cat > pyproject.toml <<-EOF || die
+	[build-system]
+	requires = ["setuptools"]
+	build-backend = "setuptools.build_meta"
+	EOF
+
+	distutils-r1_python_prepare_all
 }
-
-distutils_enable_tests pytest
