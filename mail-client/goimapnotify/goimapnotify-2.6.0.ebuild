@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 src_compile() {
-	ego build
+	ego build ./cmd/goimapnotify
 }
 
 src_install() {
