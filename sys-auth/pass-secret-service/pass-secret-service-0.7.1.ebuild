@@ -26,7 +26,7 @@ CRATES="
 	async-recursion@1.1.1
 	async-signal@0.2.8
 	async-task@4.7.1
-	async-trait@0.1.81
+	async-trait@0.1.89
 	atomic-waker@1.1.2
 	autocfg@1.3.0
 	backtrace@0.3.73
@@ -46,6 +46,7 @@ CRATES="
 	crossbeam-utils@0.8.20
 	crypto-common@0.1.6
 	digest@0.10.7
+	dyn-clone@1.0.20
 	endi@1.1.0
 	enumflags2@0.7.10
 	enumflags2_derive@0.7.10
@@ -75,9 +76,10 @@ CRATES="
 	indexmap@2.2.6
 	inout@0.1.4
 	is_terminal_polyfill@1.70.1
-	jiff-static@0.2.15
-	jiff@0.2.15
-	libc@0.2.155
+	itoa@1.0.15
+	jiff-static@0.2.19
+	jiff@0.2.19
+	libc@0.2.180
 	linux-raw-sys@0.4.14
 	log@0.4.27
 	memchr@2.7.4
@@ -86,6 +88,7 @@ CRATES="
 	mio@0.8.11
 	nanoid@0.4.0
 	nix@0.29.0
+	ntapi@0.4.2
 	num-bigint@0.4.6
 	num-complex@0.4.6
 	num-integer@0.1.46
@@ -94,6 +97,8 @@ CRATES="
 	num-traits@0.2.19
 	num@0.4.3
 	num_cpus@1.16.0
+	objc2-core-foundation@0.3.2
+	objc2-io-kit@0.3.2
 	object@0.36.1
 	once_cell@1.19.0
 	once_cell_polyfill@1.70.1
@@ -119,8 +124,11 @@ CRATES="
 	rust-fuzzy-search@0.1.1
 	rustc-demangle@0.1.24
 	rustix@0.38.34
-	serde@1.0.204
-	serde_derive@1.0.204
+	ryu@1.0.20
+	serde@1.0.228
+	serde_core@1.0.228
+	serde_derive@1.0.228
+	serde_json@1.0.145
 	serde_repr@0.1.19
 	sha1@0.10.6
 	sha2@0.10.9
@@ -130,6 +138,7 @@ CRATES="
 	static_assertions@1.1.0
 	subtle@2.6.1
 	syn@2.0.106
+	sysinfo@0.38.0
 	tempfile@3.10.1
 	thiserror-impl@2.0.12
 	thiserror@2.0.12
@@ -149,13 +158,24 @@ CRATES="
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
+	windows-collections@0.3.2
+	windows-core@0.62.2
+	windows-future@0.3.2
+	windows-implement@0.60.2
+	windows-interface@0.59.3
 	windows-link@0.1.3
+	windows-link@0.2.1
+	windows-numerics@0.3.1
+	windows-result@0.4.1
+	windows-strings@0.5.1
 	windows-sys@0.48.0
 	windows-sys@0.52.0
 	windows-sys@0.60.2
 	windows-targets@0.48.5
 	windows-targets@0.52.6
 	windows-targets@0.53.3
+	windows-threading@0.2.1
+	windows@0.62.2
 	windows_aarch64_gnullvm@0.48.5
 	windows_aarch64_gnullvm@0.52.6
 	windows_aarch64_gnullvm@0.53.0
@@ -191,14 +211,14 @@ CRATES="
 
 inherit cargo
 
-DESCRIPTION=""
-HOMEPAGE=""
+DESCRIPTION="Secret Service API implementation backed by pass"
+HOMEPAGE="https://github.com/grimsteel/pass-secret-service"
 SRC_URI="
 	${CARGO_CRATE_URIS}
-	https://github.com/grimsteel/pass-secret-service/archive/refs/tags/v0.5.1.tar.gz -> ${P}.tar.gz
+	https://github.com/grimsteel/pass-secret-service/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
-LICENSE=""
+LICENSE="GPL-3"
 # Dependent crate licenses
 LICENSE+=" BSD MIT Unicode-DFS-2016"
 SLOT="0"
