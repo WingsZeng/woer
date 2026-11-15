@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
-DESCRIPTION="A small library that optimizes some niche operations commonly used by debugger extensions"
+DESCRIPTION="Library for niche ELF operations used by debugger extensions"
 HOMEPAGE="https://github.com/pwndbg/niche-elf"
 
 LICENSE="GPL-3"
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
 python_prepare_all() {
-	cat >> pyproject.toml <<-EOF
+	cat >> pyproject.toml <<-EOF || die
 
 	[build-system]
 	requires = ["setuptools"]
