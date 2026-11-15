@@ -1,12 +1,13 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DESCRIPTION="A set of patches to the standard unsquashfs utility (part of squashfs-tools) that attempts to add support for as many hacked-up vendor-specific SquashFS implementations as possible."
+DESCRIPTION="Patched unsquashfs supporting vendor-specific SquashFS variants"
 HOMEPAGE="https://github.com/onekey-sec/sasquatch/"
 MY_PV="${PV%.*}-${PV##*.}"
 SRC_URI="https://github.com/onekey-sec/sasquatch/archive/refs/tags/sasquatch-v${MY_PV}.tar.gz -> ${P}.tar.gz"
+S=${WORKDIR}/${PN}-${PN}-v${MY_PV}
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,8 +29,6 @@ DEPEND="
 	lz4? ( app-arch/lz4 )
 	zstd? ( app-arch/zstd )
 "
-
-S=${WORKDIR}/${PN}-${PN}-v${MY_PV}
 
 src_compile() {
 	comp_default=""
