@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,31 +17,30 @@ SRC_URI="https://github.com/david942j/seccomp-tools/archive/v${PV}.tar.gz -> ${P
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 ruby_add_bdepend "
-    dev-ruby/bundler
-    >=dev-ruby/rake-13.0
-    >=dev-ruby/rake-compiler-1.0
+	>=dev-ruby/rake-13.0
+	>=dev-ruby/rake-compiler-1.0
 "
 
 ruby_add_rdepend "
-    >=dev-ruby/os-1.1.1
+	dev-ruby/logger
+	>=dev-ruby/racc-1.8
+	<dev-ruby/racc-2
 "
 
 all_ruby_prepare() {
-    sed -e 's/__dir__/"."/' \
-        -e 's/__FILE__/"'${RUBY_FAKEGEM_GEMSPEC}'"/' \
-        -e 's/git ls-files -z/find * -print0/' \
-        -i ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -e 's/__dir__/"."/' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
-    sed -e "/require 'rspec\/core\/rake_task'/d" \
-        -e "/require 'rubocop\/rake_task'/d" \
-        -e "/require 'yard'/d" \
-        -e '/^RuboCop::RakeTask/d' \
-        -e '/^RSpec::Core::RakeTask/d' \
-        -e '/^YARD::Rake::YardocTask/,/^end$/d' \
-        -i Rakefile || die
+	sed -e "/require 'bundler\/gem_tasks'/d" \
+		-e "/require 'rspec\/core\/rake_task'/d" \
+		-e "/require 'rubocop\/rake_task'/d" \
+		-e "/require 'yard'/d" \
+		-e '/^RuboCop::RakeTask/d' \
+		-e '/^RSpec::Core::RakeTask/d' \
+		-e '/^YARD::Rake::YardocTask/,/^end$/d' \
+		-i Rakefile || die
 }
 each_ruby_compile() {
 	${RUBY} -S rake compile || die "rake compile failed"
