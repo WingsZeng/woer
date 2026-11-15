@@ -15,15 +15,15 @@ CRATES="
 	anstyle-wincon@3.0.10
 	anstyle@1.0.13
 	anyhow@1.0.100
-	arbitrary@1.4.2
 	arboard@3.6.1
+	atoi_simd@0.17.0
 	autocfg@1.5.0
 	bitflags@2.10.0
 	bumpalo@3.19.0
 	bytemuck@1.24.0
 	byteorder-lite@0.1.0
 	byteorder@1.5.0
-	calamine@0.26.1
+	calamine@0.34.0
 	cassowary@0.3.0
 	castaway@0.2.4
 	cc@1.2.44
@@ -36,31 +36,28 @@ CRATES="
 	clipboard-win@5.4.1
 	codepage@0.1.2
 	colorchoice@1.0.4
+	comfy-table@7.2.2
 	compact_str@0.8.1
 	core-foundation-sys@0.8.7
 	crc32fast@1.5.0
-	crossbeam-utils@0.8.21
 	crossterm@0.28.1
+	crossterm@0.29.0
 	crossterm_winapi@0.9.1
 	crunchy@0.2.4
-	csv-core@0.1.13
-	csv@1.4.0
 	darling@0.20.11
 	darling_core@0.20.11
 	darling_macro@0.20.11
-	derive_arbitrary@1.4.2
-	dirs-next@2.0.0
-	dirs-sys-next@0.1.2
-	dirs-sys@0.4.1
-	dirs@5.0.1
+	debug_unsafe@0.1.4
+	dirs-sys@0.5.0
+	dirs@6.0.0
 	dispatch2@0.3.0
-	displaydoc@0.2.5
+	document-features@0.2.12
 	either@1.15.0
-	encode_unicode@1.0.0
 	encoding_rs@0.8.35
 	equivalent@1.0.2
 	errno@0.3.14
 	error-code@3.3.2
+	fast-float2@0.2.3
 	fax@0.2.6
 	fax_derive@0.2.0
 	fdeflate@0.3.7
@@ -74,7 +71,6 @@ CRATES="
 	hashbrown@0.15.5
 	hashbrown@0.16.0
 	heck@0.5.0
-	hermit-abi@0.5.2
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.64
 	ident_case@1.0.1
@@ -82,16 +78,16 @@ CRATES="
 	indexmap@2.12.0
 	indoc@2.0.7
 	instability@0.3.9
-	is-terminal@0.4.17
 	is_terminal_polyfill@1.70.2
 	itertools@0.13.0
 	itoa@1.0.15
 	js-sys@0.3.82
-	lazy_static@1.5.0
 	libc@0.2.177
 	libredox@0.1.10
+	libz-rs-sys@0.5.5
 	linux-raw-sys@0.11.0
 	linux-raw-sys@0.4.15
+	litrs@1.0.0
 	lock_api@0.4.14
 	log@0.4.28
 	lru@0.12.5
@@ -115,15 +111,14 @@ CRATES="
 	paste@1.0.15
 	percent-encoding@2.3.2
 	png@0.18.0
-	prettytable-rs@0.10.0
 	proc-macro2@1.0.103
 	pxfm@0.1.25
 	quick-error@2.0.1
-	quick-xml@0.31.0
+	quick-xml@0.39.2
 	quote@1.0.41
 	ratatui@0.29.0
 	redox_syscall@0.5.18
-	redox_users@0.4.6
+	redox_users@0.5.2
 	rustix@0.38.44
 	rustix@1.1.2
 	rustversion@1.0.22
@@ -145,16 +140,14 @@ CRATES="
 	strum@0.26.3
 	strum_macros@0.26.4
 	syn@2.0.108
-	term@0.7.0
-	thiserror-impl@1.0.69
 	thiserror-impl@2.0.17
-	thiserror@1.0.69
 	thiserror@2.0.17
 	tiff@0.10.3
 	toml@0.8.23
 	toml_datetime@0.6.11
 	toml_edit@0.22.27
 	toml_write@0.1.2
+	typed-path@0.12.3
 	unicode-ident@1.0.22
 	unicode-segmentation@1.12.0
 	unicode-truncate@1.1.0
@@ -176,34 +169,25 @@ CRATES="
 	windows-link@0.2.1
 	windows-result@0.4.1
 	windows-strings@0.5.1
-	windows-sys@0.48.0
 	windows-sys@0.59.0
 	windows-sys@0.60.2
 	windows-sys@0.61.2
-	windows-targets@0.48.5
 	windows-targets@0.52.6
 	windows-targets@0.53.5
-	windows_aarch64_gnullvm@0.48.5
 	windows_aarch64_gnullvm@0.52.6
 	windows_aarch64_gnullvm@0.53.1
-	windows_aarch64_msvc@0.48.5
 	windows_aarch64_msvc@0.52.6
 	windows_aarch64_msvc@0.53.1
-	windows_i686_gnu@0.48.5
 	windows_i686_gnu@0.52.6
 	windows_i686_gnu@0.53.1
 	windows_i686_gnullvm@0.52.6
 	windows_i686_gnullvm@0.53.1
-	windows_i686_msvc@0.48.5
 	windows_i686_msvc@0.52.6
 	windows_i686_msvc@0.53.1
-	windows_x86_64_gnu@0.48.5
 	windows_x86_64_gnu@0.52.6
 	windows_x86_64_gnu@0.53.1
-	windows_x86_64_gnullvm@0.48.5
 	windows_x86_64_gnullvm@0.52.6
 	windows_x86_64_gnullvm@0.53.1
-	windows_x86_64_msvc@0.48.5
 	windows_x86_64_msvc@0.52.6
 	windows_x86_64_msvc@0.53.1
 	winnow@0.7.13
@@ -211,7 +195,8 @@ CRATES="
 	x11rb@0.13.2
 	zerocopy-derive@0.8.27
 	zerocopy@0.8.27
-	zip@2.4.2
+	zip@7.2.0
+	zlib-rs@0.5.5
 	zopfli@0.8.3
 	zune-core@0.4.12
 	zune-jpeg@0.4.21
@@ -220,7 +205,7 @@ CRATES="
 
 inherit cargo
 
-DESCRIPTION="A fast terminal Excel viewer with interactive TUI, search, formulas, and export capabilities"
+DESCRIPTION="Fast terminal Excel viewer with search, formulas, and export"
 HOMEPAGE="https://github.com/bgreenwell/xleak"
 SRC_URI="
 	${CARGO_CRATE_URIS}
