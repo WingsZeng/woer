@@ -3,6 +3,7 @@
 
 EAPI=8
 USE_RUBY="ruby33 ruby34 ruby40"
+RUBY_S="rb${P}"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -22,12 +23,6 @@ ruby_add_rdepend "
 	>=dev-ruby/bindata-2
 	<dev-ruby/bindata-4
 "
-
-all_ruby_unpack() {
-	default
-	# rename to correct package name
-	mv "rb${P}" "${P}" || die
-}
 
 all_ruby_prepare() {
 	sed -e 's/__dir__/"."/' \
