@@ -7,6 +7,8 @@ USE_RUBY="ruby33 ruby34 ruby40"
 RUBY_FAKEGEM_BINWRAP="seccomp-tools"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
+RUBY_FAKEGEM_EXTENSIONS=(ext/ptrace/extconf.rb)
+RUBY_FAKEGEM_EXTENSION_LIBDIR="lib/seccomp-tools"
 
 inherit ruby-fakegem
 
@@ -17,11 +19,6 @@ SRC_URI="https://github.com/david942j/seccomp-tools/archive/v${PV}.tar.gz -> ${P
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-ruby_add_bdepend "
-	>=dev-ruby/rake-13.0
-	>=dev-ruby/rake-compiler-1.0
-"
 
 ruby_add_rdepend "
 	dev-ruby/logger
@@ -41,14 +38,4 @@ all_ruby_prepare() {
 		-e '/^RSpec::Core::RakeTask/d' \
 		-e '/^YARD::Rake::YardocTask/,/^end$/d' \
 		-i Rakefile || die
-}
-each_ruby_compile() {
-	${RUBY} -S rake compile || die "rake compile failed"
-}
-
-each_ruby_install() {
-	each_fakegem_install
-
-	# Ensure that newer rubygems version see the extention as installed
-	ruby_fakegem_extensions_installed
 }
